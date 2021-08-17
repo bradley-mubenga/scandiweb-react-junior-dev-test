@@ -1,2 +1,2 @@
 # scandiweb-react-junior-dev-test
-Junior developer test for ScandiWeb.
+//TODO Write proper documentation for this app, it should be tailored and professional.
