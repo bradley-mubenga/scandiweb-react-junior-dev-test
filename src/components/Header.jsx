@@ -11,8 +11,7 @@ export default class Header extends Component {
         this.state = {
             dropDown:  0
         } 
-    }
-
+    };
     render() {
         return (
             <header id="header">
@@ -31,7 +30,7 @@ export default class Header extends Component {
                 <div>
                     <ul>
                         <li>
-                            <a href="#">Currency</a>
+                            <a href="#">$</a>
                             <ul className="dropDown">
                                 <li>$ USD</li>
                                 <li>€ EUR</li>
@@ -39,7 +38,7 @@ export default class Header extends Component {
                             </ul>
                         </li>
 
-                        <li>Shopping Cart</li>
+                        <li>Cart</li>
                     </ul>
                 </div>
             </header>
