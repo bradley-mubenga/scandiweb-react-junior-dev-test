@@ -3,15 +3,23 @@ import React, { Component } from 'react';
 //SCSS
 import '../assets/scss/header.scss';
 
+//Images
+import logo from '../assets/images/logo.png';
+import currency from '../assets/images/currency.png';
+import chevron from '../assets/images/chevron.png';
+import cart from '../assets/images/shopping-cart.png';
+
 export default class Header extends Component {
+    //Component State
     constructor() {
         super();
 
         //Currency Drop Down State.
         this.state = {
-            dropDown:  0
+            dropDown:  false
         } 
     };
+
     render() {
         return (
             <header id="header">
@@ -24,21 +32,34 @@ export default class Header extends Component {
                 </nav>
 
                 <div>
-                    <img src="" alt="shopping-cart-logo"/>
+                    <img src={logo} alt="e-commerce-store-logo"/>
                 </div>
 
                 <div>
-                    <ul>
-                        <li>
-                            <a href="#">$</a>
-                            <ul className="dropDown">
-                                <li>$ USD</li>
-                                <li>€ EUR</li>
-                                <li> JPY</li>
+                    <ul>                       
+                        <li className="dropdown">
+                            {console.log(this.state, "thats the state")}
+                            <div className="dropbtn">
+                                <img src={currency} alt="dollar-sign"/>
+                                <img src={chevron} alt="chevron-vector"/>
+                            </div>
+
+                            <ul className="dropdown-content">
+                                <a>$ USD</a>
+                                <a>€ EUR</a>
+                                <a>¥ JPY</a>
                             </ul>
                         </li>
 
-                        <li>Cart</li>
+                        <li className="dropdown">
+                            <div>
+                                <img src={cart} alt="shopping-cart-vector"/>
+                            </div>
+
+                            <ul className="dropdown-content">
+                                <h2>Cart Items Baby!</h2>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </header>
