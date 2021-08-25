@@ -11,13 +11,11 @@ import cart from '../assets/images/shopping-cart.png';
 
 export default class Header extends Component {
     //Component State
-    constructor() {
-        super();
-
-        //Currency Drop Down State.
+    constructor(props) {
+        super(props);
         this.state = {
-            dropDown:  false
-        } 
+            shoppingCart: []
+        };
     };
 
     render() {
@@ -38,7 +36,6 @@ export default class Header extends Component {
                 <div>
                     <ul>                       
                         <li className="dropdown">
-                            {console.log(this.state, "thats the state")}
                             <div className="dropbtn">
                                 <img src={currency} alt="dollar-sign"/>
                                 <img src={chevron} alt="chevron-vector"/>
