@@ -42,8 +42,10 @@ export default class Header extends Component {
 
                             <ul className="dropdown-content">
                                 <a onClick={()=> this.props.switchCurrency(0)}>$ USD</a>
-                                <a onClick={()=> this.props.switchCurrency(1)}>€ EUR</a>
-                                <a onClick={()=> this.props.switchCurrency(2)}>¥ JPY</a>
+                                <a onClick={()=> this.props.switchCurrency(1)}>£ GBP</a>
+                                <a onClick={()=> this.props.switchCurrency(2)}>AUD</a>
+                                <a onClick={()=> this.props.switchCurrency(3)}>JPY</a>
+                                <a onClick={()=> this.props.switchCurrency(4)}>RUB</a>
                             </ul>
                         </li>
 

@@ -17,7 +17,8 @@ class App extends Component {
 
     this.state = {
       category: 'clothes',
-      currencyIndex: 0
+      currencyIndex: 0,
+      shoppingCart: []
     }
   }
 
