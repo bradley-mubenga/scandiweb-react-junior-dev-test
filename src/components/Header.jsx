@@ -23,9 +23,8 @@ export default class Header extends Component {
             <header id="header">
                 <nav>
                     <ul>
-                        <li className="nav-link active">Women</li>
-                        <li className="nav-link">Men</li>
-                        <li className="nav-link">Kids</li>
+                        <li className="nav-link active" onClick={() => this.props.switchCategory('clothes')}>Clothes</li>
+                        <li className="nav-link" onClick={() => this.props.switchCategory('tech')}>Tech</li>
                     </ul>
                 </nav>
 
@@ -42,9 +41,9 @@ export default class Header extends Component {
                             </div>
 
                             <ul className="dropdown-content">
-                                <a>$ USD</a>
-                                <a>€ EUR</a>
-                                <a>¥ JPY</a>
+                                <a onClick={()=> this.props.switchCurrency(0)}>$ USD</a>
+                                <a onClick={()=> this.props.switchCurrency(1)}>€ EUR</a>
+                                <a onClick={()=> this.props.switchCurrency(2)}>¥ JPY</a>
                             </ul>
                         </li>
 

@@ -16,29 +16,32 @@ class App extends Component {
     super(props);
 
     this.state = {
-      products: []
+      category: 'clothes',
+      currencyIndex: 0
     }
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        products: this.props.data.category.products
-      })
-    }, 5000)
+  //
+  switchCategory = (categoryType) => {
+    this.setState({
+      category: categoryType
+    })
+  }
+
+  //
+  switchCurrency = (index) => {
+    this.setState({
+      currencyIndex: index
+    })
   }
 
   render() {
     const { data } = this.props;
 
-    return (
-      <>
-        <Header />
-        <CategoryPage products={this.state.products}/>
-
-        {this.props.data.loading ? (<h1>Loading</h1>) : (<h1>Done</h1>)}
-      </>
-    )
+    return this.props.data.loading ? (<h1>Loading</h1>) : (<>
+        <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency}/>
+        <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} />
+    </>)
   }
 }
 
