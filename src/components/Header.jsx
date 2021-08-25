@@ -10,6 +10,7 @@ import chevron from '../assets/images/chevron.png';
 import cart from '../assets/images/shopping-cart.png';
 
 export default class Header extends Component {
+    
     //Component State
     constructor(props) {
         super(props);
