@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+//React Router
+import { Link } from 'react-router-dom';
+
 export default class CategoryPage extends Component {
     constructor(props) {
         super(props);
@@ -17,13 +20,13 @@ export default class CategoryPage extends Component {
                 symbol = '£'
                 break;
             case 'AUD':
-                symbol = '€'
+                symbol = 'A$'
                 break;
             case 'JPY':
-                symbol = 'JPY'
+                symbol = '¥'
                 break;
             case 'RUB':
-                symbol = 'RUB'
+                symbol = '₽'
                 break;
             default:
                 break;
@@ -39,6 +42,7 @@ export default class CategoryPage extends Component {
             <div className="" key={key}>
                 <h1>{product.name}</h1>
                 <p>{this.currencySymbol(product.prices[this.props.currencyIndex].currency)} {product.prices[this.props.currencyIndex].amount}</p>
+                <Link to={'/productpage/:id'} />
             </div>
         )
     }

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+//React Router
+import { Route, Switch } from 'react-router-dom';
+
 //GraphQL & Apollo
 import { graphql } from '@apollo/client/react/hoc';
 import { getAllProducts } from './graphql/queries';
@@ -7,6 +10,7 @@ import { getAllProducts } from './graphql/queries';
 //React Compponents
 import Header from './components/Header';
 import CategoryPage from './pages/CategoryPage';
+import ProductPage from './pages/ProductPage';
 
 //SCSS
 import './assets/scss/_global.scss';
@@ -40,8 +44,17 @@ class App extends Component {
     const { data } = this.props;
 
     return this.props.data.loading ? (<h1>Loading</h1>) : (<>
+      <Switch>
         <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency}/>
-        <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} />
+
+        <Route exact path="/">
+          <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} />
+        </Route>
+
+        <Route exact path="/productpage/:id" />
+            <ProductPage products={this.props.data.category.products} />
+        <Route/>
+      </Switch>
     </>)
   }
 }
