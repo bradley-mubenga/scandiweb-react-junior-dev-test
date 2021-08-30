@@ -56,10 +56,11 @@ export default class Header extends Component {
                             </div>
 
                             <ul className="dropdown-content">
-                                <h2>Cart Items Baby!
-
-                                    {console.log(this.props.shoppingCart)}
-                                </h2>
+                                {
+                                    this.props.shoppingCart.map(product => 
+                                        <h1>{product.name}</h1>
+                                    )
+                                }
                             </ul>
                         </li>
                     </ul>

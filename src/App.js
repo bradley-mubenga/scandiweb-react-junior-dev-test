@@ -14,6 +14,7 @@ import ProductPage from './pages/ProductPage';
 
 //SCSS
 import './assets/scss/_global.scss';
+import { LocalState } from '@apollo/client/core/LocalState';
 
 class App extends Component {
   constructor (props) {
@@ -22,7 +23,7 @@ class App extends Component {
     this.state = {
       category: 'clothes',
       currencyIndex: 0,
-      shoppingCart: JSON.parse(localStorage.getItem('shoppingCart')) || []
+      shoppingCart: []
     }
   }
 
@@ -44,9 +45,7 @@ class App extends Component {
   addToCart = (products, productID) => {
     let [ product ] = products.filter(product => product.id === productID)
     this.setState({
-      shoppingCart: [...this.state.shoppingCart, product]
-    }, () => {
-      localStorage.setItem('shopingCart', JSON.stringify(this.state.shoppingCart))
+      shoppingCart: [product, ...this.state.shoppingCart]
     })
   }
 
@@ -68,7 +67,6 @@ class App extends Component {
                     <ProductPage products={this.props.data.category.products} addToCart={this.addToCart} />
                   </Route>
               </Switch>
-              <h1>{console.log(this.state.shoppingCart)}</h1>
             </>
           )
         }
