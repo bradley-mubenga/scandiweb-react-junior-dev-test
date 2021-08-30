@@ -17,9 +17,6 @@ export default class Header extends Component {
     //Component State
     constructor(props) {
         super(props);
-        this.state = {
-            shoppingCart: []
-        };
     };
 
     render() {
@@ -59,7 +56,10 @@ export default class Header extends Component {
                             </div>
 
                             <ul className="dropdown-content">
-                                <h2>Cart Items Baby!</h2>
+                                <h2>Cart Items Baby!
+
+                                    {console.log(this.props.shoppingCart)}
+                                </h2>
                             </ul>
                         </li>
                     </ul>

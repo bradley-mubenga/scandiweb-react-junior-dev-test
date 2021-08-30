@@ -22,7 +22,7 @@ class App extends Component {
     this.state = {
       category: 'clothes',
       currencyIndex: 0,
-      shoppingCart: []
+      shoppingCart: JSON.parse(localStorage.getItem('shoppingCart')) || []
     }
   }
 
@@ -40,12 +40,22 @@ class App extends Component {
     })
   }
 
+  //
+  addToCart = (products, productID) => {
+    let [ product ] = products.filter(product => product.id === productID)
+    this.setState({
+      shoppingCart: [...this.state.shoppingCart, product]
+    }, () => {
+      localStorage.setItem('shopingCart', JSON.stringify(this.state.shoppingCart))
+    })
+  }
+
   render() {
     const { data } = this.props;
 
     return (
       <>
-        <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency}/>
+        <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency} shoppingCart={this.state.shoppingCart}/>
         {
           this.props.data.loading ? (<h1>Loading</h1>) : (
             <>
@@ -55,9 +65,10 @@ class App extends Component {
                   </Route>
 
                   <Route exact path="/:id">
-                    <ProductPage products={this.props.data.category.products} />
+                    <ProductPage products={this.props.data.category.products} addToCart={this.addToCart} />
                   </Route>
               </Switch>
+              <h1>{console.log(this.state.shoppingCart)}</h1>
             </>
           )
         }

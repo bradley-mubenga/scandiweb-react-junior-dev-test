@@ -10,7 +10,12 @@ export default class ProductPage extends Component {
         let productArray = this.props.products.filter((product, key) => product.id === id)
 
         return productArray.map((product, key) => 
-            <h1>{product.name}</h1>
+            <>
+                <div key={key}>
+                    <h1>{product.name}</h1>
+                    <button onClick={() => this.props.addToCart(products, id)}>Add To Cart</button>
+                </div>
+            </>
         )
     }
 

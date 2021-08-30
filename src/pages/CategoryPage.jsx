@@ -38,12 +38,14 @@ export default class CategoryPage extends Component {
     //
     findProducts(productsProp) {
         let array = productsProp.filter(product => product.category === this.props.category);
-        return array.map((product, key) => 
+        return array.map((product, key) =>
+            <>
             <Link to={product.id} key={key}>
                 <h1>{product.name}</h1>
                 <p>{this.currencySymbol(product.prices[this.props.currencyIndex].currency)} {product.prices[this.props.currencyIndex].amount}</p>
-                <Link to={product.id}>ADD TO CART</Link>
             </Link>
+            <Link to={product.id}>ADD TO CART</Link>
+            </> 
         )
     }
 
