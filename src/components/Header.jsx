@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+//React Router
+import { Link } from 'react-router-dom';
+
 //SCSS
 import '../assets/scss/header.scss';
 
@@ -24,8 +27,8 @@ export default class Header extends Component {
             <header id="header">
                 <nav>
                     <ul>
-                        <li className="nav-link active" onClick={() => this.props.switchCategory('clothes')}>Clothes</li>
-                        <li className="nav-link" onClick={() => this.props.switchCategory('tech')}>Tech</li>
+                        <Link to="/" className="" onClick={() => this.props.switchCategory('clothes')}>Clothes</Link>
+                        <Link to="/" className="" onClick={() => this.props.switchCategory('tech')}>Tech</Link>
                     </ul>
                 </nav>
 

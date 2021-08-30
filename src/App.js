@@ -43,19 +43,26 @@ class App extends Component {
   render() {
     const { data } = this.props;
 
-    return this.props.data.loading ? (<h1>Loading</h1>) : (<>
-      <Switch>
+    return (
+      <>
         <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency}/>
+        {
+          this.props.data.loading ? (<h1>Loading</h1>) : (
+            <>
+              <Switch>
+                  <Route exact path="/">
+                    <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} />
+                  </Route>
 
-        <Route exact path="/">
-          <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} />
-        </Route>
-
-        <Route exact path="/productpage/:id" />
-            <ProductPage products={this.props.data.category.products} />
-        <Route/>
-      </Switch>
-    </>)
+                  <Route exact path="/:id">
+                    <ProductPage products={this.props.data.category.products} />
+                  </Route>
+              </Switch>
+            </>
+          )
+        }
+      </>
+    )
   }
 }
 
