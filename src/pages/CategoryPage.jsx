@@ -15,33 +15,6 @@ export default class CategoryPage extends Component {
     }
 
     //
-    currencySymbol(isoCode) {
-        let symbol = '';
-
-        switch (isoCode) {
-            case 'USD':
-                symbol = '$'
-                break;
-            case 'GBP':
-                symbol = '£'
-                break;
-            case 'AUD':
-                symbol = 'A$'
-                break;
-            case 'JPY':
-                symbol = '¥'
-                break;
-            case 'RUB':
-                symbol = '₽'
-                break;
-            default:
-                break;
-        }
-
-        return symbol;
-    }
-
-    //
     findProducts(productsProp) {
         let array = productsProp.filter(product => product.category === this.props.category);
         return array.map((product, key) =>
@@ -54,7 +27,7 @@ export default class CategoryPage extends Component {
                     <div className="productInfo">
                         <Link to={product.id} className="productLink">
                             <h5>{product.name}</h5>
-                            <h6>{this.currencySymbol(product.prices[this.props.currencyIndex].currency)} {product.prices[this.props.currencyIndex].amount}</h6>
+                            <h6>{this.props.currencySymbol(product.prices[this.props.currencyIndex].currency)} {product.prices[this.props.currencyIndex].amount}</h6>
                         </Link>
                     </div>
 

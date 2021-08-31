@@ -42,6 +42,33 @@ class App extends Component {
   }
 
   //
+  currencySymbol(isoCode) {
+      let symbol = '';
+
+      switch (isoCode) {
+          case 'USD':
+              symbol = '$'
+              break;
+          case 'GBP':
+              symbol = '£'
+              break;
+          case 'AUD':
+              symbol = 'A$'
+              break;
+          case 'JPY':
+              symbol = '¥'
+              break;
+          case 'RUB':
+              symbol = '₽'
+              break;
+          default:
+              break;
+      }
+
+      return symbol;
+  }
+
+  //
   addToCart = (products, productID) => {
     let [ product ] = products.filter(product => product.id === productID)
     this.setState({
@@ -60,11 +87,11 @@ class App extends Component {
             <>
               <Switch>
                   <Route exact path="/">
-                    <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} addToCart={this.addToCart}/>
+                    <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} addToCart={this.addToCart} currencySymbol={this.currencySymbol}/>
                   </Route>
 
                   <Route exact path="/:id">
-                    <ProductPage products={this.props.data.category.products} addToCart={this.addToCart} />
+                    <ProductPage products={this.props.data.category.products} addToCart={this.addToCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} />
                   </Route>
               </Switch>
             </>
