@@ -60,7 +60,7 @@ class App extends Component {
             <>
               <Switch>
                   <Route exact path="/">
-                    <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} />
+                    <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} addToCart={this.addToCart}/>
                   </Route>
 
                   <Route exact path="/:id">
