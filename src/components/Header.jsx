@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 //React Router
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 //SCSS
 import '../assets/scss/header.scss';
@@ -18,6 +18,19 @@ export default class Header extends Component {
     constructor(props) {
         super(props);
     };
+
+    //
+    totalAmount(shoppingCart, currencyIndex) {
+        let totalAmount = 0;
+        let currencySymbol = '$';
+
+        for (let i = 0; i < shoppingCart.length; i++){
+            currencySymbol = this.props.currencySymbol(shoppingCart[i].prices[this.props.currencyIndex].currency)
+            totalAmount += shoppingCart[i].prices[currencyIndex].amount;
+        }
+
+        return `${currencySymbol} ${Math.round(totalAmount)}`;
+    }
 
     render() {
         return (
@@ -57,10 +70,27 @@ export default class Header extends Component {
 
                             <ul className="dropdown-content">
                                 {
-                                    this.props.shoppingCart.map(product => 
-                                        <h1>{product.name}</h1>
+                                    this.props.shoppingCart.slice(0, 2).map(product => 
+                                        <div className="cartItem">
+                                            <div className="">
+                                                <h5>{product.name}</h5>
+                                                <p>{this.props.currencySymbol(product.prices[this.props.currencyIndex].currency)} {product.prices[this.props.currencyIndex].amount}</p>
+                                            </div>
+                                            <div className="">
+                                                <img src={product.gallery[0]} alt="product" className="cartProductImage"/>
+                                            </div>
+                                        </div>
                                     )
                                 }
+
+                                <div>
+                                    <h5>Total: {this.totalAmount(this.props.shoppingCart, this.props.currencyIndex)}</h5>
+                                </div>
+
+                                <div className="shoppingCartLinks">
+                                    <Link to="/shoppingCart">View Bag</Link>
+                                    <button className='checkoutButton'>Checkout</button>
+                                </div>
                             </ul>
                         </li>
                     </ul>

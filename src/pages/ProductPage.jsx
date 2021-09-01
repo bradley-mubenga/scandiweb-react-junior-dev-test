@@ -1,8 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+//SCSS
+import '../assets/scss/productPage.scss';
 
 export default class ProductPage extends Component {
     constructor(props){
         super(props);
+
+        this.state = {
+            imageIndex: 0
+        }
     }
 
     returnHTML(string) {
@@ -12,38 +19,62 @@ export default class ProductPage extends Component {
     }
 
     //
-    carosel(imagesArray) {
+    carosel(imageArray, imageIndex) {
+        return (
+            <img src={imageArray[imageIndex]} alt="main-product-image"/>
+        )
+    }
+
+    //
+    moveCarosel(imageIndex) {
+        this.setState({
+            imageIndex: imageIndex
+        })
     }
 
     //
     findProduct(products, id) {
-        let productArray = this.props.products.filter((product, key) => product.id === id)
+        let productArray = products.filter((product) => product.id === id)
 
         return productArray.map((product, key) => 
-            <main className="" key={key}>
+            <main className="product" key={key}>
                 <div>
-                    <div>
-                        <button onClick={() => this.carosel(product.gallery)}>CLICK ME</button>
+                    <div className="productPage">
                         <div className="carousel">
-                            <div className="smallPictures"></div>
-                            <div className="bigPicture"></div>
+                            <div className="smallPicturesDesktop">
+                                {
+                                    product.gallery.map((imageLink, key) =>
+                                        <img onClick={() => this.moveCarosel(key)} src={imageLink} alt="product" className="smallPicture" key={key} />
+                                    )
+                                }
+                            </div>
+                            <div className="bigPicture">
+                                {
+                                    this.carosel(product.gallery, this.state.imageIndex)
+                                }
+                            </div>
+                            <div className="smallPicturesMobile">
+                                {
+                                    product.gallery.map((imageLink, key) =>
+                                        <img onClick={() => this.moveCarosel(key)} src={imageLink} alt="product" className="smallPicture" key={key} />
+                                    )
+                                }
+                            </div>
                         </div>
 
                         <div className="description">
-                            <h4>{product.name}</h4>
+                            <h2>{product.name}</h2>
 
                             <div className="sizes"></div>
 
                             <div className="price">
-                                <h5>PRICE:</h5>
+                                <h4>PRICE:</h4>
                                 <h5>{this.props.currencySymbol(product.prices[this.props.currencyIndex].currency)} {product.prices[this.props.currencyIndex].amount}</h5>
                                 
-                                <div>
-                                    <button>Add To Cart</button>
-                                </div>
+                                <button className="greenButton"  onClick={() => this.props.addToCart(products, product.id)}>Add To Cart</button>
                             </div>
 
-                            <div dangerouslySetInnerHTML={{__html: product.description}} />
+                            <div className="descriptionText" dangerouslySetInnerHTML={{__html: product.description}} />
                         </div>
                     </div>
                 </div>

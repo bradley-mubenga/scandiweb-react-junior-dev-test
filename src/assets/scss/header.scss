@@ -35,8 +35,8 @@
   
   /* The container <div> - needed to position the dropdown content */
   .dropdown {
-    position: relative;
     display: inline-block;
+    position: sticky;
   }
   
   /* Dropdown Content (Hidden by Default) */
@@ -61,5 +61,28 @@
   .dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column;
+  }
+
+  .cartItem {
+    display: grid;
+    grid-template-columns: 70% 30%;
+
+    .cartProductImage {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+  }
+
+  .checkoutButton {
+    background-color: lightgreen;
+    padding: 1rem 3rem;
+    margin-bottom: 1.5rem;
+    border: none;
+  }
+
+  .shoppingCartLinks {
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
 }

@@ -14,7 +14,7 @@ import ProductPage from './pages/ProductPage';
 
 //SCSS
 import './assets/scss/_global.scss';
-import { LocalState } from '@apollo/client/core/LocalState';
+import './assets/scss/responsive.scss';
 
 class App extends Component {
   constructor (props) {
@@ -81,7 +81,7 @@ class App extends Component {
 
     return (
       <>
-        <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency} shoppingCart={this.state.shoppingCart}/>
+        <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency} shoppingCart={this.state.shoppingCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol}/>
         {
           this.props.data.loading ? (<h1>Loading</h1>) : (
             <>
