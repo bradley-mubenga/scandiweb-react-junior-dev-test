@@ -11,6 +11,7 @@ import { getAllProducts } from './graphql/queries';
 import Header from './components/Header';
 import CategoryPage from './pages/CategoryPage';
 import ProductPage from './pages/ProductPage';
+import ShoppingCart from './pages/ShoppingCart'; 
 
 //SCSS
 import './assets/scss/_global.scss';
@@ -87,11 +88,15 @@ class App extends Component {
             <>
               <Switch>
                   <Route exact path="/">
-                    <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} addToCart={this.addToCart} currencySymbol={this.currencySymbol}/>
+                    <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} addToCart={this.addToCart} currencySymbol={this.currencySymbol} />
                   </Route>
 
                   <Route exact path="/:id">
                     <ProductPage products={this.props.data.category.products} addToCart={this.addToCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} />
+                  </Route>
+
+                  <Route exact path="/shoppingCart">
+                    <ShoppingCart products={this.props.data.category.products} addToCart={this.addToCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} />
                   </Route>
               </Switch>
             </>
