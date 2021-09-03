@@ -71,15 +71,25 @@ class App extends Component {
 
   //
   addToCart = (products, productID) => {
-    let [ product ] = products.filter(product => product.id === productID)
-    this.setState({
-      shoppingCart: [product, ...this.state.shoppingCart]
-    })
+    let [ product ] = products.filter(product => product.id === productID);
+    let newProduct = { amount: 1, item: product }
+    
+    if (this.state.shoppingCart.some(p => p.item.id === newProduct.item.id)) {
+      this.state.shoppingCart.find((p, index) => {
+        if (p.item.id === newProduct.item.id) {
+          this.state.shoppingCart[index].amount++; //Bug Here, use setState Function
+        }
+      });
+    }
+    else {
+      this.setState({
+        shoppingCart: [newProduct, ...this.state.shoppingCart]
+      })
+    }
   }
 
   render() {
     const { data } = this.props;
-
     return (
       <>
         <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency} shoppingCart={this.state.shoppingCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol}/>
@@ -95,7 +105,7 @@ class App extends Component {
                     <ProductPage products={this.props.data.category.products} addToCart={this.addToCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} />
                   </Route>
 
-                  <Route exact path="/shoppingCart">
+                  <Route exact path="/shop/cart">
                     <ShoppingCart products={this.props.data.category.products} addToCart={this.addToCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} />
                   </Route>
               </Switch>

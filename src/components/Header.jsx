@@ -25,8 +25,8 @@ export default class Header extends Component {
         let currencySymbol = '$';
 
         for (let i = 0; i < shoppingCart.length; i++){
-            currencySymbol = this.props.currencySymbol(shoppingCart[i].prices[this.props.currencyIndex].currency)
-            totalAmount += shoppingCart[i].prices[currencyIndex].amount;
+            currencySymbol = this.props.currencySymbol(shoppingCart[i].item.prices[this.props.currencyIndex].currency)
+            totalAmount += shoppingCart[i].item.prices[currencyIndex].amount;
         }
 
         return `${currencySymbol} ${Math.round(totalAmount)}`;
@@ -64,8 +64,9 @@ export default class Header extends Component {
                         </li>
 
                         <li className="dropdownCart">
-                            <div>
+                            <div className="shoppingCartIcon">
                                 <img src={cart} alt="shopping-cart-vector"/>
+                                <span>{this.props.shoppingCart.length}</span>
                             </div>
 
 
@@ -74,11 +75,16 @@ export default class Header extends Component {
                                     this.props.shoppingCart.slice(0, 2).map(product => 
                                         <div className="cartItem">
                                             <div className="">
-                                                <h5>{product.name}</h5>
-                                                <p>{this.props.currencySymbol(product.prices[this.props.currencyIndex].currency)} {product.prices[this.props.currencyIndex].amount}</p>
+                                                <h5>{product.item.name}</h5>
+                                                <p>{this.props.currencySymbol(product.item.prices[this.props.currencyIndex].currency)} {product.item.prices[this.props.currencyIndex].amount}</p>
                                             </div>
+                                            <span>
+                                                <button>+</button>
+                                                <p>{product.amount}</p>
+                                                <button>-</button>
+                                            </span>
                                             <div className="">
-                                                <img src={product.gallery[0]} alt="product" className="cartProductImage"/>
+                                                <img src={product.item.gallery[0]} alt="product" className="cartProductImage"/>
                                             </div>
                                         </div>
                                     )
@@ -89,7 +95,7 @@ export default class Header extends Component {
                                 </div>
 
                                 <div className="shoppingCartLinks">
-                                    <Link to="/shoppingCart">View Bag</Link>
+                                    <Link to="/shop/cart">View Bag</Link>
                                     <button className='checkoutButton'>Checkout</button>
                                 </div>
                             </ul>
