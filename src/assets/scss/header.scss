@@ -38,9 +38,23 @@
     display: inline-block;
     position: sticky;
   }
+
+  .dropdownCart {
+    display: inline-block;
+    position: sticky;
+  }
   
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 0.5rem 2rem;
+    z-index: 1;
+  }
+
+  .dropdown-cart {
     display: none;
     position: fixed;
     background-color: #f9f9f9;
@@ -59,6 +73,11 @@
   
   /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdownCart:hover .dropdown-cart {
     display: flex;
     flex-direction: column;
   }

@@ -63,12 +63,13 @@ export default class Header extends Component {
                             </ul>
                         </li>
 
-                        <li className="dropdown">
+                        <li className="dropdownCart">
                             <div>
                                 <img src={cart} alt="shopping-cart-vector"/>
                             </div>
 
-                            <ul className="dropdown-content">
+
+                            <ul className="dropdown-cart">
                                 {
                                     this.props.shoppingCart.slice(0, 2).map(product => 
                                         <div className="cartItem">
