@@ -106,7 +106,7 @@ class App extends Component {
                   </Route>
 
                   <Route exact path="/shop/cart">
-                    <ShoppingCart products={this.props.data.category.products} addToCart={this.addToCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} />
+                    <ShoppingCart shoppingCart={this.state.shoppingCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} />
                   </Route>
               </Switch>
             </>
