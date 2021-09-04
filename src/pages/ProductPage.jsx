@@ -21,7 +21,7 @@ export default class ProductPage extends Component {
     //
     carosel(imageArray, imageIndex) {
         return (
-            <img src={imageArray[imageIndex]} alt="main-product-image"/>
+            <img src={imageArray[imageIndex]} alt="main-product"/>
         )
     }
 

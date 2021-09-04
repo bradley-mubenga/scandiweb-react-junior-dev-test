@@ -10,10 +10,6 @@ import '../assets/scss/categoryPage.scss';
 import shoppingCart from '../assets/images/shopping-cart-white.png';
 
 export default class CategoryPage extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     //
     findProducts(productsProp) {
         let array = productsProp.filter(product => product.category === this.props.category);
@@ -21,7 +17,7 @@ export default class CategoryPage extends Component {
             <div className="productCard" key={key}>
                 <div>
                     <div className="productImage">
-                        <img src={product.gallery[0]} className="image" />
+                        <img src={product.gallery[0]} className="image"  alt="product-display"/>
                     </div>
 
                     <div className="productInfo">

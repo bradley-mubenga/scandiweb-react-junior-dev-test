@@ -110,14 +110,30 @@
   }
 
   .checkoutButton {
-    background-color: lightgreen;
-    padding: 1rem 3rem;
-    margin-bottom: 1.5rem;
+    background: lightgreen;
+    padding: 0.5rem 0.7rem;
     border: none;
+  }
+
+  .checkoutButton:hover {
+    cursor: pointer;
   }
 
   .shoppingCartLinks {
     display: grid;
     grid-template-columns: 50% 50%;
+    grid-column-gap: 5px;
   }
+}
+
+.whiteButton {
+  background: white;
+  border: 2px solid;
+  padding: 0.5rem 0.7rem;
+}
+
+.whiteButton:hover {
+  color: white;
+  cursor: pointer;
+  background: black;
 }

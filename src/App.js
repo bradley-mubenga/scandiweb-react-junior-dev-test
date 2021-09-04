@@ -26,6 +26,11 @@ class App extends Component {
       currencyIndex: 0,
       shoppingCart: []
     }
+
+
+    //
+    this.incrementQuantity = this.incrementQuantity.bind(this);
+    this.decrementQuantity = this.decrementQuantity.bind(this);
   }
 
   //
@@ -75,11 +80,7 @@ class App extends Component {
     let newProduct = { amount: 1, item: product }
     
     if (this.state.shoppingCart.some(p => p.item.id === newProduct.item.id)) {
-      this.state.shoppingCart.find((p, index) => {
-        if (p.item.id === newProduct.item.id) {
-          this.state.shoppingCart[index].amount++; //Bug Here, use setState Function
-        }
-      });
+      return null;
     }
     else {
       this.setState({
@@ -88,11 +89,40 @@ class App extends Component {
     }
   }
 
+  //
+  incrementQuantity(theCartState, index) {
+        let cartState = theCartState;
+        let singleProduct = theCartState[index];
+        singleProduct.amount++;
+        theCartState[index] = singleProduct;
+        
+        //Setting State
+        this.setState({
+          shoppingCart: cartState
+        });
+}
+
+  //
+  decrementQuantity(theCartState, index) {
+        let cartState = theCartState;
+        let singleProduct = theCartState[index];
+
+        if (singleProduct.amount > 1) {
+          singleProduct.amount--;
+          theCartState[index] = singleProduct;
+          
+          //Setting State
+          this.setState({
+            shoppingCart: cartState
+          });
+        }
+  }
+
   render() {
-    const { data } = this.props;
     return (
       <>
-        <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency} shoppingCart={this.state.shoppingCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol}/>
+        <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency} shoppingCart={this.state.shoppingCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} incrementQuantity={this.incrementQuantity} decrementQuantity={this.decrementQuantity} category={this.state.category} />
+
         {
           this.props.data.loading ? (<h1>Loading</h1>) : (
             <>
@@ -102,11 +132,11 @@ class App extends Component {
                   </Route>
 
                   <Route exact path="/:id">
-                    <ProductPage products={this.props.data.category.products} addToCart={this.addToCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} />
+                    <ProductPage products={this.props.data.category.products} addToCart={this.addToCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} category={this.state.category} />
                   </Route>
 
                   <Route exact path="/shop/cart">
-                    <ShoppingCart shoppingCart={this.state.shoppingCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} />
+                    <ShoppingCart shoppingCart={this.state.shoppingCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} incrementQuantity={this.incrementQuantity} decrementQuantity={this.decrementQuantity} />
                   </Route>
               </Switch>
             </>
