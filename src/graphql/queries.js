@@ -9,6 +9,16 @@ query {
       name
       inStock
       gallery
+      attributes {
+        id
+        name
+        type
+          items {
+              displayValue
+              value
+              id
+            }
+          }
       description
       category
       prices {
