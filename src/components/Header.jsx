@@ -76,7 +76,7 @@ export default class Header extends Component {
                             <ul className="dropdown-cart">
                                 {
                                     this.props.shoppingCart.slice(0, 2).map((product, index) => 
-                                        <div className="cartItem">
+                                        <div className="cartItem" key={index}>
                                             <div className="">
                                                 <h5>{product.item.name}</h5>
                                                 <p>{this.props.currencySymbol(product.item.prices[this.props.currencyIndex].currency)} {product.item.prices[this.props.currencyIndex].amount}</p>
@@ -102,9 +102,9 @@ export default class Header extends Component {
 
                                 <div className="shoppingCartLinks">
                                     <Link to="/shop/cart"><button className="whiteButton">VIEW BAG</button></Link>
-                                    <Link>
+                                    <div>
                                         <button className='checkoutButton'>CHECKOUT</button>
-                                    </Link>
+                                    </div>
                                 </div>
                             </ul>
                         </li>

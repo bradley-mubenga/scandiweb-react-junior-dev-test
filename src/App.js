@@ -18,6 +18,8 @@ import './assets/scss/_global.scss';
 import './assets/scss/responsive.scss';
 
 class App extends Component {
+  cartData;
+
   constructor (props) {
     super(props);
 
@@ -119,6 +121,26 @@ class App extends Component {
     this.setState({
       isCart: state
     })
+  }
+
+  componentDidMount() {
+    this.cartData = JSON.parse(localStorage.getItem('shoppingCart'));
+
+    if (localStorage.getItem('shoppingCart')){
+      this.setState({
+        shoppingCart: this.cartData
+      })
+    }
+
+    else {
+      this.setState({
+        shoppingCart: []
+      })
+    }
+  }
+
+  componentDidUpdate(nextProps, nextState) {
+    localStorage.setItem('shoppingCart', JSON.stringify(nextState.shoppingCart))
   }
 
   render() {
