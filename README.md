@@ -7,7 +7,7 @@ Make you you have cloned the [GraphQL Server repo](https://github.com/scandiweb/
 ## Installation
 1. Clone the repo to your local machine.
 
-2. Use the package manager [Yarn](https://yarnpkg.com/) to install Yarn. If you have Yarn already installed skip to the next step.
+2. You will need the package manager [Yarn](https://yarnpkg.com/), to install Yarn run the command below. However, if you have Yarn already installed skip to the next step.
 
 ```bash
 npm install -g yarn
