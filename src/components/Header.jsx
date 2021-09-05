@@ -63,10 +63,13 @@ export default class Header extends Component {
                             </ul>
                         </li>
 
-                        <li className="dropdownCart">
+                        <li className="dropdownCart dropdown-cartOn">
                             <div className="shoppingCartIcon">
                                 <img src={cart} alt="shopping-cart-vector"/>
-                                <span>{this.props.shoppingCart.length}</span>
+
+                                <div>
+                                    <span>{this.props.shoppingCart.length}</span>
+                                </div>
                             </div>
 
 
@@ -78,13 +81,16 @@ export default class Header extends Component {
                                                 <h5>{product.item.name}</h5>
                                                 <p>{this.props.currencySymbol(product.item.prices[this.props.currencyIndex].currency)} {product.item.prices[this.props.currencyIndex].amount}</p>
                                             </div>
-                                            <span>
-                                                <button className="blockButton" onClick={() => this.props.incrementQuantity(this.props.shoppingCart, index)}>+</button>
-                                                <p>{product.amount}</p>
-                                                <button className="blockButton" onClick={() => this.props.decrementQuantity(this.props.shoppingCart, index)}>-</button>
-                                            </span>
-                                            <div className="">
-                                                <img src={product.item.gallery[0]} alt="product" className="cartProductImage"/>
+
+                                            <div className="counterImage">
+                                                <span>
+                                                    <button className="blockButton" onClick={() => this.props.incrementQuantity(this.props.shoppingCart, index)}>+</button>
+                                                    <p>{product.amount}</p>
+                                                    <button className="blockButton" onClick={() => this.props.decrementQuantity(this.props.shoppingCart, index)}>-</button>
+                                                </span>
+                                                <div className="">
+                                                    <img src={product.item.gallery[0]} alt="product" className="cartProductImage"/>
+                                                </div>
                                             </div>
                                         </div>
                                     )

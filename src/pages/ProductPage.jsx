@@ -63,13 +63,32 @@ export default class ProductPage extends Component {
                         </div>
 
                         <div className="description">
-                            <h2>{product.name}</h2>
+                            <div>
+                                <h2 className="brandName">{product.brand}</h2>
+                                <h2>{product.name}</h2>
+                            </div>
 
-                            <div className="sizes"></div>
+                            <div className="productSizes">
+                                    <div>
+                                        <button className="blockButton">XS</button>
+                                    </div>
+
+                                    <div>
+                                        <button className="blockButton">S</button>
+                                    </div>
+
+                                    <div>
+                                        <button className="blockButton">M</button>
+                                    </div>
+                                    
+                                    <div>
+                                        <button className="blockButton">L</button>
+                                    </div>
+                            </div>
 
                             <div className="price">
-                                <h4>PRICE:</h4>
-                                <h5>{this.props.currencySymbol(product.prices[this.props.currencyIndex].currency)} {product.prices[this.props.currencyIndex].amount}</h5>
+                                <h4 className="priceWord">PRICE:</h4>
+                                <h5 className="priceWord">{this.props.currencySymbol(product.prices[this.props.currencyIndex].currency)} {product.prices[this.props.currencyIndex].amount}</h5>
                                 
                                 <button className="greenButton"  onClick={() => this.props.addToCart(products, product.id)}>Add To Cart</button>
                             </div>

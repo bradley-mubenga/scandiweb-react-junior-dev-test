@@ -24,13 +24,9 @@ class App extends Component {
     this.state = {
       category: 'clothes',
       currencyIndex: 0,
-      shoppingCart: []
+      shoppingCart: [],
+      isCart: false
     }
-
-
-    //
-    this.incrementQuantity = this.incrementQuantity.bind(this);
-    this.decrementQuantity = this.decrementQuantity.bind(this);
   }
 
   //
@@ -48,7 +44,7 @@ class App extends Component {
   }
 
   //
-  currencySymbol(isoCode) {
+  currencySymbol = (isoCode) => {
       let symbol = '';
 
       switch (isoCode) {
@@ -90,7 +86,7 @@ class App extends Component {
   }
 
   //
-  incrementQuantity(theCartState, index) {
+  incrementQuantity = (theCartState, index) => {
         let cartState = theCartState;
         let singleProduct = theCartState[index];
         singleProduct.amount++;
@@ -103,7 +99,7 @@ class App extends Component {
 }
 
   //
-  decrementQuantity(theCartState, index) {
+  decrementQuantity = (theCartState, index) => {
         let cartState = theCartState;
         let singleProduct = theCartState[index];
 
@@ -118,17 +114,24 @@ class App extends Component {
         }
   }
 
+  //
+  setOpacity = (state) => {
+    this.setState({
+      isCart: state
+    })
+  }
+
   render() {
     return (
       <>
-        <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency} shoppingCart={this.state.shoppingCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} incrementQuantity={this.incrementQuantity} decrementQuantity={this.decrementQuantity} category={this.state.category} />
+        <Header switchCategory={this.switchCategory} switchCurrency={this.switchCurrency} shoppingCart={this.state.shoppingCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} incrementQuantity={this.incrementQuantity} decrementQuantity={this.decrementQuantity} category={this.state.category} setOpacity={this.setOpacity} isCart={this.state.isCart}/>
 
         {
           this.props.data.loading ? (<h1>Loading</h1>) : (
             <>
               <Switch>
                   <Route exact path="/">
-                    <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} addToCart={this.addToCart} currencySymbol={this.currencySymbol} />
+                    <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} addToCart={this.addToCart} currencySymbol={this.currencySymbol} isCart={this.state.isCart}/>
                   </Route>
 
                   <Route exact path="/:id">

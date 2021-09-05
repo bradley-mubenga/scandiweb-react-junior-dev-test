@@ -48,12 +48,15 @@
       grid-template-columns: 50% 50%;
       grid-template-rows: 50% 50%;
 
-      span {
-        background-color: black;
+      div {
         color: white;
-        padding: 5px;
-        border-radius: 50%;
         transform: translateY(-15px) translateX(-5px); 
+
+        span {
+          border-radius: 25%;
+          padding: 5px 5px;
+          background-color: black;
+        }
       }
     }
   }
@@ -99,7 +102,8 @@
 
   .cartItem {
     display: grid;
-    grid-template-columns: 60% 10% 30%;
+    grid-template-columns: 60% 40%;
+    align-items: center;
     padding: 0.5rem 0;
 
     .cartProductImage {
@@ -136,4 +140,10 @@
   color: white;
   cursor: pointer;
   background: black;
+}
+
+.counterImage {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
 }
