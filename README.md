@@ -13,7 +13,13 @@ Make you you have cloned the [GraphQL Server repo](https://github.com/scandiweb/
 npm install -g yarn
 ```
 
-3. Run the project locally by running the following command.
+3. Install the dependencies by running the following command.
+
+```bash
+yarn add
+```
+
+4. Run the project locally by running the following command.
 
 ```bash
 yarn start
