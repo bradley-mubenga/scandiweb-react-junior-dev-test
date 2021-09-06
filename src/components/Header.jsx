@@ -14,6 +14,16 @@ import chevron from '../assets/images/chevron.png';
 import cart from '../assets/images/shopping-cart.png';
 
 export default class Header extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            attributeSize: 0,
+            attributeColor: 0,
+            attributeCapacity: 0,
+            attributeMisc: 0
+        }
+    }
 
     //
     totalAmount(shoppingCart, currencyIndex) {
@@ -27,6 +37,58 @@ export default class Header extends Component {
 
         return `${currencySymbol} ${Math.round(totalAmount)}`;
     }
+
+        //
+        attributeColor(index) {
+            if (index === this.state.attributeColor) {
+                return ("activeBlockButton")
+            }
+        }
+    
+        setColorState(value) {
+            this.setState({
+                attributeColor: value
+            })
+        }
+        
+        //
+        attributeCapacity(index) {
+            if (index === this.state.attributeCapacity) {
+                return ("activeBlockButton")
+            }
+        }
+    
+        setCapacityState(value) {
+            this.setState({
+                attributeCapacity: value
+            })
+        }
+        
+        //
+        attributeSize(index) {
+            if (index === this.state.attributeSize) {
+                return ("activeBlockButton")
+            }
+        }
+    
+        setSizeState(value) {
+            this.setState({
+                attributeSize: value
+            })
+        }
+    
+        //
+        attributeMisc(index) {
+            if (index === this.state.attributeMisc) {
+                return ("activeBlockButton")
+            }
+        }
+    
+        setMiscState(value) {
+            this.setState({
+                attributeMisc: value
+            })
+        }
 
     render() {
         //
@@ -83,6 +145,25 @@ export default class Header extends Component {
                                             <div className="">
                                                 <h5>{product.item.name}</h5>
                                                 <p>{this.props.currencySymbol(product.item.prices[this.props.currencyIndex].currency)} {product.item.prices[this.props.currencyIndex].amount}</p>
+                                                {
+                                                    product.item.attributes.map((attribute, keyIndex) => 
+                                                        <div className="productSizesCart" key={keyIndex}>
+                                                            <div>
+                                                            {   
+                                                                attribute.items.map((item, index) =>
+                                                                <div className={
+                                                                    (attribute.id === 'Color') ? (this.attributeColor(index)) : (attribute.id === 'Capacity') ? (this.attributeCapacity(index)) : (attribute.id === 'Size') ? (this.attributeSize(index)) : (attribute.id) ? (this.attributeMisc(index)) : ("")
+                                                                } key={index}>
+                                                                    <button className="blockButton" style={(attribute.type === 'swatch') ? ({ backgroundColor: item.value}) : ({})} onClick={
+                                                                    (attribute.id === 'Color') ? () => this.setColorState(index) : (attribute.id === 'Capacity') ? () => this.setCapacityState(index) : (attribute.id === 'Size') ? () => this.setSizeState(index) : (attribute.id) ? () => this.setMiscState(index) : (() => {return ""})  
+                                                                    }>{(attribute.type === 'swatch') ? "" : (item.displayValue)}</button>
+                                                                </div>
+                                                                )
+                                                            }
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                }
                                             </div>
 
                                             <div className="counterImage">

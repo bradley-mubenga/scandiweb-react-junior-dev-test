@@ -88,6 +88,23 @@ class App extends Component {
   }
 
   //
+  removeFromCart = (products, productID) => {
+    let [ product ] = products.filter(product => product.id === productID);
+    let newProduct = { amount: 1, item: product }
+    
+    if (this.state.shoppingCart.some(p => p.item.id === newProduct.item.id)) {
+      let newCartState = this.state.shoppingCart.filter(product => product.item.id !== newProduct.item.id)
+
+      this.setState({
+        shoppingCart: newCartState
+      })
+    }
+    else {
+      return null;
+    }
+  }
+
+  //
   incrementQuantity = (theCartState, index) => {
         let cartState = theCartState;
         let singleProduct = theCartState[index];
@@ -98,7 +115,7 @@ class App extends Component {
         this.setState({
           shoppingCart: cartState
         });
-}
+  }
 
   //
   decrementQuantity = (theCartState, index) => {
@@ -153,15 +170,15 @@ class App extends Component {
             <>
               <Switch>
                   <Route exact path="/">
-                    <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} addToCart={this.addToCart} currencySymbol={this.currencySymbol} isCart={this.state.isCart}/>
+                    <CategoryPage products={this.props.data.category.products} category={this.state.category} currencyIndex={this.state.currencyIndex} addToCart={this.addToCart} currencySymbol={this.currencySymbol} isCart={this.state.isCart} shoppingCart={this.state.shoppingCart} removeFromCart={this.removeFromCart}/>
                   </Route>
 
                   <Route exact path="/:id">
-                    <ProductPage products={this.props.data.category.products} addToCart={this.addToCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} category={this.state.category} />
+                    <ProductPage products={this.props.data.category.products} removeFromCart={this.removeFromCart} addToCart={this.addToCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} category={this.state.category} shoppingCart={this.state.shoppingCart}/>
                   </Route>
 
                   <Route exact path="/shop/cart">
-                    <ShoppingCart shoppingCart={this.state.shoppingCart} currencyIndex={this.state.currencyIndex} currencySymbol={this.currencySymbol} incrementQuantity={this.incrementQuantity} decrementQuantity={this.decrementQuantity} />
+                    <ShoppingCart shoppingCart={this.state.shoppingCart} currencyIndex={this.state.currencyIndex} removeFromCart={this.removeFromCart} addToCart={this.addToCart} currencySymbol={this.currencySymbol} incrementQuantity={this.incrementQuantity} decrementQuantity={this.decrementQuantity} products={this.props.data.category.products} />
                   </Route>
               </Switch>
             </>

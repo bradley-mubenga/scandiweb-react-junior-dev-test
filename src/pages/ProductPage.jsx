@@ -152,8 +152,10 @@ export default class ProductPage extends Component {
                             <div className="price">
                                 <h4 className="priceWord">PRICE:</h4>
                                 <h5 className="priceWord">{this.props.currencySymbol(product.prices[this.props.currencyIndex].currency)} {product.prices[this.props.currencyIndex].amount}</h5>
-                                
-                                <button className="greenButton"  onClick={() => this.props.addToCart(products, product.id)}>Add To Cart</button>
+
+                                {
+                                    (this.props.shoppingCart.some(p => p.item.id === product.id)) ? <button className="removeButton" onClick={() => this.props.removeFromCart(products, product.id)}>Remove From Cart</button> : <button className="greenButton" onClick={() => this.props.addToCart(products, product.id)}>Add To Cart</button>
+                                }
                             </div>
 
                             <div className="descriptionText" dangerouslySetInnerHTML={{__html: product.description}} />

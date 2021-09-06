@@ -64,7 +64,29 @@
             }
         }
 
+        .removeCartButton {
+            display: none;
+            position: relative;
+            transform: translate(85%, -85%);
+            margin: 0px;
+
+
+            img {
+                max-width: 25px;
+                height: 25px;
+                background-color: black;
+                padding: 1rem;
+                border-radius: 50%;
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2),
+                            -2px -2px 2px rgba(0, 0, 0, 0.2);
+            }
+        }
+
         .addToCartButton:hover {
+            cursor: pointer;
+        }
+
+        .removeCartButton:hover {
             cursor: pointer;
         }
 
@@ -83,6 +105,10 @@
                     -5px -5px 15px rgba(0, 0, 0, 0.15);
         
         .addToCartButton {
+            display: block;
+        }
+
+        .removeCartButton {
             display: block;
         }
     }

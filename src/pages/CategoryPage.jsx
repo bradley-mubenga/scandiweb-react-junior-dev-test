@@ -40,9 +40,13 @@ export default class CategoryPage extends Component {
                     }
 
                     {
-                        product.inStock ? ( <div className="addToCartButton" onClick={() => this.props.addToCart(array, product.id)}>
-                        <img src={shoppingCart} alt="shopping-cart"/>
-                    </div> ) : ""
+                        product.inStock ? (
+                            (this.props.shoppingCart.some(p => p.item.id === product.id)) ? <div className="removeCartButton" onClick={() => this.props.removeFromCart(array, product.id)}>
+                            <img src={shoppingCart} alt="shopping-cart"/>
+                        </div>: <div className="addToCartButton" onClick={() => this.props.addToCart(array, product.id)}>
+                            <img src={shoppingCart} alt="shopping-cart"/>
+                        </div>
+                        ) : ""
                     }
                 </div>
             </div>

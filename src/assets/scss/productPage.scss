@@ -80,6 +80,7 @@
             }
 
             .greenButton {
+                color: black;
                 background-color: lightgreen;
                 padding: 1rem 3rem;
                 margin-bottom: 1.5rem;
@@ -87,6 +88,18 @@
             }
 
             .greenButton:hover {
+                cursor: pointer;
+            }
+
+            .removeButton {
+                background-color: black;
+                color: white;
+                padding: 1rem 3rem;
+                margin-bottom: 1.5rem;
+                border: none;
+            }
+            
+            .removeButton:hover {
                 cursor: pointer;
             }
         }
@@ -114,7 +127,8 @@
     }
 
     .activeBlockButton {
-        border: 0.2rem lime solid;
+        opacity: 0.5;
+        border: 0.2rem grey solid;
     }
 }
 
