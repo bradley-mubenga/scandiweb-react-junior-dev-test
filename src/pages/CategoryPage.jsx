@@ -19,7 +19,7 @@ export default class CategoryPage extends Component {
                     {
                         product.inStock ? ( <div className="productImage">
                         <img src={product.gallery[0]} className="image"  alt={product.name} />
-                    </div> ) : ( <div class="productImage">
+                    </div> ) : ( <div className="productImage">
                     <img src={product.gallery[0]} alt={product.name} className="outImg" />
                         <div className="center">OUT OF STOCK</div>
                     </div> )
