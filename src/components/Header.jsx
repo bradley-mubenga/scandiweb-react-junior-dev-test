@@ -74,6 +74,9 @@ export default class Header extends Component {
 
 
                             <ul className="dropdown-cart">
+                                <div>
+                                    <p><span>My Bag</span>, {this.props.shoppingCart.length} {(this.props.shoppingCart.length > 1) ? "items" : "item"}</p>
+                                </div>
                                 {
                                     this.props.shoppingCart.slice(0, 2).map((product, index) => 
                                         <div className="cartItem" key={index}>

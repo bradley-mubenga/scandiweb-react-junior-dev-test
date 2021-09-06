@@ -99,11 +99,14 @@
 }
 
 .productSizes {
-    padding: 1.5rem 0;
+    padding: 0.5rem 0;
     display: flex;
+    flex-direction: column;
 
     div {
-        margin-right: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 0.25rem;
     }
 
     div button:hover{

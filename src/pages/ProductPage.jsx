@@ -31,6 +31,7 @@ export default class ProductPage extends Component {
             imageIndex: imageIndex
         })
     }
+    
 
     //
     findProduct(products, id) {
@@ -68,23 +69,24 @@ export default class ProductPage extends Component {
                                 <h2>{product.name}</h2>
                             </div>
 
-                            <div className="productSizes">
-                                    <div>
-                                        <button className="blockButton">XS</button>
+                            {
+                                product.attributes.map((attribute, index) => 
+                                    <div className="productSizes" key={index}>
+                                        <div>
+                                            <h3>{attribute.name}</h3>
+                                        </div>
+                                        <div>
+                                        {
+                                            attribute.items.map((item, index) =>
+                                            <div className="displayValue" key={index}>
+                                                <button className="blockButton" style={(attribute.type === 'swatch') ? ({ backgroundColor: item.value}) : ({})}>{(attribute.type === 'swatch') ? "" : (item.displayValue)}</button>
+                                            </div>
+                                            )
+                                        }
+                                        </div>
                                     </div>
-
-                                    <div>
-                                        <button className="blockButton">S</button>
-                                    </div>
-
-                                    <div>
-                                        <button className="blockButton">M</button>
-                                    </div>
-                                    
-                                    <div>
-                                        <button className="blockButton">L</button>
-                                    </div>
-                            </div>
+                                )
+                            }
 
                             <div className="price">
                                 <h4 className="priceWord">PRICE:</h4>
