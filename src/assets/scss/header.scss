@@ -147,3 +147,23 @@
   grid-template-columns: 50% 50%;
   align-items: center;
 }
+
+.productSizesCart {
+  display: flex;
+  flex-direction: column;
+
+  div {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 0.25rem;
+  }
+
+  div button:hover{
+      cursor: pointer;
+  }
+
+  .activeBlockButton {
+      opacity: 0.5;
+      border: 0.2rem grey solid;
+  }
+}
