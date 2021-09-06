@@ -39,3 +39,15 @@
         cursor: pointer;
     }
 }
+
+.greenButton {
+    background-color: black;
+    color: white;
+    padding: 1rem 3rem;
+    margin-bottom: 1.5rem;
+    border: none;
+}
+
+.greenButton:hover {
+    cursor: pointer;
+}
