@@ -2,7 +2,7 @@
 Hey there! thanks for taking the time to review my code! Below you will find instructions on how to run this project locally.
 
 ## Prerequisites
-Make you you have cloned the [GraphQL Server repo](https://github.com/scandiweb/junior-react-endpoint) and have it running locally on ```localhost:4000```.
+Make sure you have cloned the [GraphQL Server repo](https://github.com/scandiweb/junior-react-endpoint) and have it running locally on ```localhost:4000```.
 
 ## Installation
 1. Clone the repo to your local machine.
