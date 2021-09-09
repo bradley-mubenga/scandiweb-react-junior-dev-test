@@ -1,13 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+//Images
+import dollarSign from '../assets/images/dollar-sign.png';
+import chevron from '../assets/images/chevron.png';
 
 export default class CurrencySelector extends Component {
     render() {
         return (
             <>
-                <button 
-                    className="" 
+                <div 
+                    className="currencySelector" 
                     onClick={() => this.props.handleCurrency(!this.props.click)}
-                >S</button>
+                > 
+                    <img className="dollarSign" src={dollarSign} alt="chevron" />
+                    <img className="chevron" src={chevron} alt="chevron" />
+                </div>
 
                 <ul 
                     className={this.props.click ? "dropdownMenu show" : "dropdownMenu"}

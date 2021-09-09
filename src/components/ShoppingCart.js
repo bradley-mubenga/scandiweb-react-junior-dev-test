@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+//Images
+import cart from '../assets/images/shopping-cart.png';
 
 export default class Dropdown extends Component {
     render() {
         return (
             <>
-                <button 
-                    className="" 
+                <div 
+                    className="shoppingCart" 
                     onClick={() => this.props.handleCart(!this.props.click)}
-                >S</button>
+                >
+                    <img className="cartImage" src={cart} alt="shopping-cart" />
+                </div>
                 
                 <ul
                     className={this.props.click ? "dropdownMenu show" : "dropdownMenu"}

@@ -27,19 +27,51 @@ nav {
         list-style-type: none;
 
         a {
+            color: black;
+            font-size: 16px;
+            font-weight: 400;
             text-decoration: none;
-            padding: 9px 15px;
             transition: all 0.3s ease;
         }
 
+        a.active{
+            color: #5ECE7B;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #5ECE7B;
+        }
+
+        li {
+            .shoppingCart:hover {
+                cursor: pointer;
+            }
+
+            .currencySelector {
+                margin-right: 35px;
+
+                img.dollarSign {
+                    transform: translateY(5px);
+                }
+                img.chevron {
+                    position: absolute;
+                    transform: translateY(30px);
+                }
+            }
+
+            .currencySelector:hover {
+                cursor: pointer;
+            }
+        }
+
         .dropdownMenu {
-            background: black;
-            color:white;
+            background: white;
+            color:color;
             width: 180px;
             top: 85px;
             right: 20px;
             line-height: 45px;
             position: absolute;
+            box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.250),
+                        -1px -1px 7px rgba(0, 0, 0, 0.250);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -54,6 +86,13 @@ nav {
             opacity: 1;
             visibility: visible;
             top: 65px;
+        }
+    }
+
+    .logoWrapper {
+        display: flex;
+        .logoImage:hover {
+            cursor: pointer;
         }
     }
 }

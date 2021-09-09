@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+//SCSS
+import '../src/assets/sass/_global.scss';
+
 //React Router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -25,7 +28,11 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <Header switchCategory={this.switchCategory} />
+        <Header
+          switchCategory={this.switchCategory}
+          category={this.state.category}
+        />
+        
         <Switch>
           <Route exact path="/">
             <CategoryPage category={this.state.category}/>
