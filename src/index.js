@@ -3,22 +3,20 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-//React Router
-import { BrowserRouter } from 'react-router-dom';
-
-import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+//Apollo GraphQL
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/",
-  cache: new InMemoryCache()
+  uri: 'http://localhost:4000'
 });
 
 ReactDOM.render(
-  <BrowserRouter>
-    <ApolloProvider client={client}>
+  <ApolloProvider client={client}>
+    <React.StrictMode>
       <App />
-    </ApolloProvider>
-  </BrowserRouter>,
+    </React.StrictMode>
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
