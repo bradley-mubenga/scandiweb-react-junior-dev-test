@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 
 //React Router
 import { Link } from "react-router-dom"
+
 //Apollo GraphQL
 import { Query } from '@apollo/react-components';
-
-//GraphQL Query
 import { QUERY_ALL, QUERY_CLOTHES, QUERY_TECH } from '../graphql/productQuery';
 
 export default class ProductListingPage extends Component {
@@ -23,18 +22,20 @@ export default class ProductListingPage extends Component {
                         if (loading) return <p>Loading...</p>;
                         if (error) return <p>Error :(</p>;
 
-                        return <>
-                            {
-                                data.category.products.map((product, index) => (
-                                    <div key={index}>
-                                        <div>          
-                                        <h1>{product.name}</h1>
-                                        <Link to={ `/product/${product.id}`}>Producto!</Link>
+                        return (
+                            <main>
+                                {
+                                    data.category.products.map((product, index) => (
+                                        <div key={index}>
+                                            <div>          
+                                            <h1>{product.name}</h1>
+                                            <Link to={ `/product/${product.id}`}>Producto!</Link>
+                                            </div>
                                         </div>
-                                    </div>
                                     ))
-                            }
-                        </>
+                                }
+                            </main>
+                        )
                     }
                 }
             </Query>
