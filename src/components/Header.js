@@ -12,13 +12,15 @@ import logo from '../assets/images/logo transparent.png';
 //Components
 import ShoppingCart from './ShoppingCart';
 import CurrencySelector from './CurrencySelector';
+import MobileNavigation from './MobileNavigation';
 
 export default class Header extends Component {
     constructor(props){
         super(props)
         this.state = {
             currencyClick: false,
-            cartClick: false
+            cartClick: false,
+            mobile: false
         };
     }
 
@@ -36,11 +38,17 @@ export default class Header extends Component {
         });
     }
 
+    handleMobile = (state) => {
+        this.setState({
+            mobile: state
+        })
+    }
+
     render() {
         return (
             <nav>
                 <div className="navigationWrapper">
-                    <div>
+                    <div className="navigationDesktop">
                         <ul className="navigationLinks">
                             <li>
                                 <Link
@@ -72,7 +80,7 @@ export default class Header extends Component {
                         </div>
                     </div>
 
-                    <div>
+                    <div className="navigationDesktop">
                         <ul className="navigationLinks">
                             <li>
                                 <CurrencySelector 
@@ -88,6 +96,13 @@ export default class Header extends Component {
                             </li>
                         </ul>
                     </div>
+
+                    <MobileNavigation 
+                        mobile={this.state.mobile}
+                        handleMobile={this.handleMobile}
+                        category={this.props.category}
+                        switchCategory={this.props.switchCategory}
+                    />
                 </div>
             </nav>
         )
