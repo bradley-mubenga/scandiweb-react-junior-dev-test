@@ -28,6 +28,10 @@ export default class MobileNavigation extends Component {
                     <div>
                         <h5>Shopping Cart</h5>
                     </div>
+
+                    <div>
+                        <h5>Currency Selector, Normal HTML SELECT</h5>
+                    </div>
                     
                     <ul>
                         <li>
