@@ -20,7 +20,8 @@ export default class Header extends Component {
         this.state = {
             currencyClick: false,
             cartClick: false,
-            mobile: false
+            mobile: false,
+            shoppingCart: []
         };
     }
 
@@ -44,6 +45,25 @@ export default class Header extends Component {
         })
     }
 
+    ADD_TO_CART = (product) => {
+        //Check if its in cart
+        const doesExist = this.state.shoppingCart.some(item => item.id === product.id);
+        if (doesExist) {
+        }
+
+        else if (doesExist === false) {
+            this.setState({
+                ...this.state,
+                shoppingCart: [
+                    ...this.state.shoppingCart,
+                    {...product, qty: 1}
+                ]
+            });
+        }
+
+    }
+
+    //Put the navigation JSX in another file, navigation.js
     render() {
         return (
             <nav>
@@ -70,6 +90,12 @@ export default class Header extends Component {
                                     className={(this.props.category === 'clothes') ? "active" : ""}
                                     onClick={() => this.props.switchCategory('clothes')}
                                 >CLOTHES</Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/"
+                                    onClick={() => this.ADD_TO_CART({id: 3, j: 22})}
+                                >check</Link>
                             </li>
                         </ul>
                     </div>
