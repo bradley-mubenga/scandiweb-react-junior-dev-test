@@ -21,7 +21,11 @@ export default class Header extends Component {
             currencyClick: false,
             cartClick: false,
             mobile: false,
-            shoppingCart: []
+            shoppingCart: [
+                {id: 1, j: 22},
+                {id: 2, j: 23232},
+                {id: 5, j: 242}
+            ]
         };
     }
 
@@ -48,7 +52,26 @@ export default class Header extends Component {
     ADD_TO_CART = (product) => {
         //Check if its in cart
         const doesExist = this.state.shoppingCart.some(item => item.id === product.id);
+        
+        //Incrementing The Cart Quantity If It Exists
         if (doesExist) {
+            let index = this.state.shoppingCart.findIndex(item => item.id === product.id);
+            if (index === -1) {
+                console.log("Error, Product Not Found")
+            }
+            else {
+                this.setState({
+                    shoppingCart: [
+                       ...this.state.shoppingCart.slice(0,index),
+                       Object.assign(
+                           {}, 
+                           this.state.shoppingCart[index], 
+                           {...product, qty: this.state.shoppingCart[index].qty + 1}
+                        ),
+                       ...this.state.shoppingCart.slice(index+1)
+                    ]
+                });
+            }
         }
 
         else if (doesExist === false) {
@@ -61,6 +84,37 @@ export default class Header extends Component {
             });
         }
 
+    }
+
+
+    REMOVE_FROM_CART = (product) => {
+        //Check if its in cart
+        const doesExist = this.state.shoppingCart.some(item => item.id === product.id);
+        
+        //Incrementing The Cart Quantity If It Exists
+        if (doesExist) {
+            let index = this.state.shoppingCart.filter(item => item.id !== product.id);
+            this.setState({
+                shoppingCart: [ ...index ]
+            });
+        }
+    }
+
+    REMOVE_FROM_CART = (product) => {
+        //Check if its in cart
+        const doesExist = this.state.shoppingCart.some(item => item.id === product.id);
+        
+        //Incrementing The Cart Quantity If It Exists
+        if (doesExist) {
+            let index = this.state.shoppingCart.filter(item => item.id !== product.id);
+            this.setState({
+                shoppingCart: [ ...index ]
+            });
+        }
+    }
+
+    componentDidUpdate(){
+        console.log(this.state.shoppingCart)
     }
 
     //Put the navigation JSX in another file, navigation.js
@@ -96,6 +150,12 @@ export default class Header extends Component {
                                     to="/"
                                     onClick={() => this.ADD_TO_CART({id: 3, j: 22})}
                                 >check</Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/"
+                                    onClick={() => this.REMOVE_FROM_CART({id: 3, j: 22})}
+                                >Remove</Link>
                             </li>
                         </ul>
                     </div>
