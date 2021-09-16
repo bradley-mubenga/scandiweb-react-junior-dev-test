@@ -5,6 +5,9 @@ import dollarSign from '../assets/images/dollar-sign.png';
 import chevron from '../assets/images/chevron.png';
 
 export default class CurrencySelector extends Component {
+    componentDidMount() {
+        console.log(this.props)
+    }
     render() {
         return (
             <>

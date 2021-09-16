@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 
-//React Router
-import { Link } from 'react-router-dom';
-
 //SCSS
 import '../assets/sass/header.scss';
 
-//Images
-import logo from '../assets/images/logo transparent.png';
-
 //Components
-import ShoppingCart from './ShoppingCart';
-import CurrencySelector from './CurrencySelector';
 import MobileNavigation from './MobileNavigation';
+import DesktopNavigation from './DesktopNavigation';
 
 export default class Header extends Component {
     constructor(props){
@@ -20,12 +13,7 @@ export default class Header extends Component {
         this.state = {
             currencyClick: false,
             cartClick: false,
-            mobile: false,
-            shoppingCart: [
-                {id: 1, j: 22},
-                {id: 2, j: 23232},
-                {id: 5, j: 242}
-            ]
+            mobile: false
         };
     }
 
@@ -46,142 +34,24 @@ export default class Header extends Component {
     handleMobile = (state) => {
         this.setState({
             mobile: state
-        })
-    }
-
-    ADD_TO_CART = (product) => {
-        //Check if its in cart
-        const doesExist = this.state.shoppingCart.some(item => item.id === product.id);
-        
-        //Incrementing The Cart Quantity If It Exists
-        if (doesExist) {
-            let index = this.state.shoppingCart.findIndex(item => item.id === product.id);
-            if (index === -1) {
-                console.log("Error, Product Not Found")
-            }
-            else {
-                this.setState({
-                    shoppingCart: [
-                       ...this.state.shoppingCart.slice(0,index),
-                       Object.assign(
-                           {}, 
-                           this.state.shoppingCart[index], 
-                           {...product, qty: this.state.shoppingCart[index].qty + 1}
-                        ),
-                       ...this.state.shoppingCart.slice(index+1)
-                    ]
-                });
-            }
-        }
-
-        else if (doesExist === false) {
-            this.setState({
-                ...this.state,
-                shoppingCart: [
-                    ...this.state.shoppingCart,
-                    {...product, qty: 1}
-                ]
-            });
-        }
-
-    }
-
-
-    REMOVE_FROM_CART = (product) => {
-        //Check if its in cart
-        const doesExist = this.state.shoppingCart.some(item => item.id === product.id);
-        
-        //Incrementing The Cart Quantity If It Exists
-        if (doesExist) {
-            let index = this.state.shoppingCart.filter(item => item.id !== product.id);
-            this.setState({
-                shoppingCart: [ ...index ]
-            });
-        }
-    }
-
-    REMOVE_FROM_CART = (product) => {
-        //Check if its in cart
-        const doesExist = this.state.shoppingCart.some(item => item.id === product.id);
-        
-        //Incrementing The Cart Quantity If It Exists
-        if (doesExist) {
-            let index = this.state.shoppingCart.filter(item => item.id !== product.id);
-            this.setState({
-                shoppingCart: [ ...index ]
-            });
-        }
+        });
     }
 
     componentDidUpdate(){
-        console.log(this.state.shoppingCart)
     }
 
-    //Put the navigation JSX in another file, navigation.js
     render() {
         return (
             <nav>
                 <div className="navigationWrapper">
-                    <div className="navigationDesktop">
-                        <ul className="navigationLinks">
-                            <li>
-                                <Link
-                                    to="/"
-                                    className={(this.props.category === 'all') ? "active" : ""}
-                                    onClick={() => this.props.switchCategory('all')}
-                                >ALL</Link>
-                            </li>
-                            <li>
-                                <Link
-                                    to="/"
-                                    className={(this.props.category === 'tech') ? "active second" : "second"}
-                                    onClick={() => this.props.switchCategory('tech')}
-                                >TECH</Link>
-                            </li>
-                            <li>
-                                <Link
-                                    to="/"
-                                    className={(this.props.category === 'clothes') ? "active" : ""}
-                                    onClick={() => this.props.switchCategory('clothes')}
-                                >CLOTHES</Link>
-                            </li>
-                            <li>
-                                <Link
-                                    to="/"
-                                    onClick={() => this.ADD_TO_CART({id: 3, j: 22})}
-                                >check</Link>
-                            </li>
-                            <li>
-                                <Link
-                                    to="/"
-                                    onClick={() => this.REMOVE_FROM_CART({id: 3, j: 22})}
-                                >Remove</Link>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <div className="logoWrapper">
-                            <img src={logo} alt="e-commerce-logo" className="logoImage"/>
-                        </div>
-                    </div>
-
-                    <div className="navigationDesktop">
-                        <ul className="navigationLinks">
-                            <li>
-                                <CurrencySelector 
-                                    click={this.state.currencyClick}
-                                    handleCurrency={this.handleCurrency}
-                                />
-                            </li>
-                            <li>
-                                <ShoppingCart 
-                                    click={this.state.cartClick}
-                                    handleCart={this.handleCart}
-                                />
-                            </li>
-                        </ul>
-                    </div>
+                    <DesktopNavigation
+                        category={this.props.category}
+                        switchCategory={this.props.switchCategory}
+                        click={this.state.currencyClick}
+                        handleCurrency={this.handleCurrency}
+                        cartClick={this.state.cartClick}
+                        handleCart={this.handleCart}
+                    />
 
                     <MobileNavigation 
                         mobile={this.state.mobile}

@@ -1,0 +1,27 @@
+.categoryPage {
+
+    h1.categoryName {
+        padding: 0 0 2rem 0;
+    }
+
+    .products {
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        grid-template-rows: 33% 33% 33%;
+        grid-gap: 15px;
+        justify-items: center;
+        align-items: center;
+        grid-auto-flow: row;
+    }
+
+    .product {
+        padding: 3rem 1.5rem;
+        width: 75%;
+    }
+
+    .product:hover{
+        padding: 3rem 1.5rem;
+        width: 75%;
+        box-shadow: 0 4px 8px #b6b6b6, 0 6px 20px #b6b6b6;
+    }
+}

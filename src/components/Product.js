@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
+//React Router
+import { Link } from "react-router-dom";
 
-class Product extends Component {
+export default class Product extends Component {
     render() {
         return (
-            <div>
-                
+            <div className="product" key={this.props.index}>
+                <div>          
+                    <div className="productImageWrapper">
+                        <img
+                            alt={this.props.product.name} src={this.props.product.gallery[0]}
+                            className="responsiveImage"
+                        />
+                    </div>
+                    <Link to={ `/product/${this.props.product.id}`}>Producto!</Link>
+                </div>
             </div>
         )
     }
 }
-
-const mapStateToProps = state => {
-    return {
-        products: state.shop
-    }
-}
-
-export default connect(mapStateToProps)(Product);
