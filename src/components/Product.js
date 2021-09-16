@@ -18,7 +18,7 @@ export default class Product extends Component {
                         />
                         
                         <span className="">
-                            <img src="add-to-cart" src={addToCart} className="addToCartButton" />
+                            <img src={addToCart} className="addToCartButton" alt=""/>
                         </span>
                     </div>
 

@@ -4,27 +4,47 @@ import React, { Component } from 'react';
 import dollarSign from '../assets/images/dollar-sign.png';
 import chevron from '../assets/images/chevron.png';
 
+//Apollo GraphQL
+import { Query } from '@apollo/react-components';
+import { GET_CURRENCY } from '../graphql/miscQuery';
+
 export default class CurrencySelector extends Component {
-    componentDidMount() {
-        console.log(this.props)
-    }
     render() {
         return (
-            <>
-                <div 
-                    className="currencySelector" 
-                    onClick={() => this.props.handleCurrency(!this.props.click)}
-                > 
-                    <img className="dollarSign" src={dollarSign} alt="chevron" />
-                    <img className="chevron" src={chevron} alt="chevron" />
-                </div>
+            <Query query={ GET_CURRENCY }>
+                {
+                    ({loading, error, data}) => {
+                        if (loading) return <p>Loading</p>;
+                        if (error) return <p>Err</p>;
 
-                <ul 
-                    className={this.props.click ? "dropdownMenu show" : "dropdownMenu"}
-                >
-                    <li onClick={() => this.props.handleCurrency(false)}>Currency</li>
-                </ul>   
-            </>
+                        return (
+                            <div>
+                                <div 
+                                    className="currencySelector" 
+                                    onClick={() => this.props.handleCurrency(!this.props.click)}
+                                > 
+                                    <img className="dollarSign" src={dollarSign} alt="chevron" />
+                                    <img className="chevron" src={chevron} alt="chevron" />
+                                </div>
+
+                                {/*Use same function that returns currency symbol here*/}
+                                <ul 
+                                    className={this.props.click ? "dropdownMenu show" : "dropdownMenu"}
+                                >
+                                    {
+                                        data.currencies.map((currency, index) => (
+                                            <li 
+                                            key={index} 
+                                            onClick={() => this.props.handleCurrency(false)}
+                                            >{currency}</li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                        )
+                    }
+                }
+            </Query>
         )
     }
 }

@@ -37,6 +37,7 @@
         }
 
         .productText {
+            transition: 0.25s ease;
             h4 {
                 font-style: normal;
                 font-weight: 300 !important;
@@ -53,7 +54,7 @@
         }
 
         .productText:hover{
-            text-decoration: underline;
+            color: rgba(0, 0, 0, 0.5);
         }
     }
 
