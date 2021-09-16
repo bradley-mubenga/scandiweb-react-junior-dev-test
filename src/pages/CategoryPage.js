@@ -27,7 +27,7 @@ export default class ProductListingPage extends Component {
 
                         return (
                             <main className="container categoryPage">
-                                <h1 className="categoryName">
+                                <h1 className="headingDesktop">
                                     {this.props.category[0].toUpperCase() + this.props.category.slice(1)}
                                 </h1>
 
