@@ -39,10 +39,21 @@
         .productText {
             h4 {
                 font-style: normal;
-                font-weight: 300;
-                font-size: 18px;
-                line-height: 160%;
+                font-weight: 300 !important;
+                font-size: 18px !important;
+                line-height: 160% !important;
             }
+
+            h5 {
+                font-style: normal;
+                font-weight: bold; //500 Font Weight Does Not Look Like Mockup Design
+                font-size: 18px !important;
+                line-height: 160% !important;
+            }
+        }
+
+        .productText:hover{
+            text-decoration: underline;
         }
     }
 
