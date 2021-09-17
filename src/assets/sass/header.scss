@@ -68,7 +68,7 @@ nav {
             color: black;
             width: 114px;
             top: 50px;
-            right: 50px;
+            right: 2vw;
             padding: 10px 20px;
             line-height: 60px;
             position: absolute;
@@ -104,7 +104,7 @@ nav {
             color: black;
             width: 325px;
             top: 85px;
-            right: 20px;
+            right: 2vw;
             padding: 2rem 1rem;
             line-height: 45px;
             position: absolute;
@@ -125,16 +125,27 @@ nav {
                 align-items: center;
 
                 .cartItemText {
-                    h5 {
-                        font-size: 16px;
-                        font-weight: 300;
-                        line-height: 25.6px;
+                    .cartLink {
+                        h5 {
+                            font-size: 16px;
+                            font-weight: 300;
+                            line-height: 25.6px;
+                        }
+    
+                        h4 {
+                            font-size: 16px;
+                            font-weight: bold;
+                            line-height: 25.6px;
+                        }
                     }
+                }
 
-                    h4 {
-                        font-size: 16px;
-                        font-weight: bold;
-                        line-height: 25.6px;
+                .cartLink:hover {
+                    cursor: pointer;
+                    a {
+                        h5, h4 {
+                            color: #5ECE7B;
+                        }
                     }
                 }
 
@@ -158,9 +169,35 @@ nav {
                     }
 
                     .cartItemImageWrapper {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
                         img {
                             width: 100px !important;
                         }
+                    }
+                }
+
+                .attributesBlock {
+                    display: grid;
+                    grid-template-columns: 40% 40%;
+                    grid-gap: 12px;
+                    padding: 0.5rem 0;
+                    
+                    button {
+                        background: white;
+                        border: black 1px solid;
+                        padding: 0.25rem;
+                        font-size: 14px;
+                        font-weight: 400;
+                        text-align: center;
+                    }
+
+                    button:hover {
+                        cursor: pointer;
+                        background: black;
+                        color: white;
                     }
                 }
             }

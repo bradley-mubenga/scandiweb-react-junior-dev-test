@@ -57,6 +57,7 @@ export default class Dropdown extends Component {
                         shoppingCart={this.props.shoppingCart}
                         INCREMENT_CART={this.props.INCREMENT_CART}
                         DECREMENT_CART={this.props.DECREMENT_CART}
+                        handleCart={this.props.handleCart}
                         product={product}
                         index={index}
                         />
