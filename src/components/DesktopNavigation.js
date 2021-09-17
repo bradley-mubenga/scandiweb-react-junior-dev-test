@@ -60,6 +60,11 @@ export default class DesktopNavigation extends Component {
                             <ShoppingCart 
                                 cartClick={this.props.cartClick}
                                 handleCart={this.props.handleCart}
+                                shoppingCart={this.props.shoppingCart}
+                                currencyIndex={this.props.currencyIndex}
+                                returnSymbol={this.props.returnSymbol}
+                                INCREMENT_CART={this.props.INCREMENT_CART}
+                                DECREMENT_CART={this.props.DECREMENT_CART}
                             />
                         </li>
                     </ul>

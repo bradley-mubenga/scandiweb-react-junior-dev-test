@@ -70,7 +70,7 @@ nav {
             top: 50px;
             right: 50px;
             padding: 10px 20px;
-            line-height: 50px;
+            line-height: 60px;
             position: absolute;
             box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.250),
                         -1px -1px 7px rgba(0, 0, 0, 0.250);
@@ -84,7 +84,7 @@ nav {
                 font-style: normal;
                 font-weight: 500;
                 font-size: 18px;
-                line-height: 160%;
+                line-height: 250%;
             }
 
             li:hover {
@@ -102,9 +102,10 @@ nav {
         .dropdownCart {
             background: white;
             color: black;
-            width: 180px;
+            width: 325px;
             top: 85px;
             right: 20px;
+            padding: 2rem 1rem;
             line-height: 45px;
             position: absolute;
             box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.250),
@@ -116,6 +117,57 @@ nav {
             li {
                 width: 100%;
                 display: block;
+            }
+
+            .cartItem {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                align-items: center;
+
+                .cartItemText {
+                    h5 {
+                        font-size: 16px;
+                        font-weight: 300;
+                        line-height: 25.6px;
+                    }
+
+                    h4 {
+                        font-size: 16px;
+                        font-weight: bold;
+                        line-height: 25.6px;
+                    }
+                }
+
+                .itemQtyAndImage {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .qtyButtons {
+                        button {
+                            background: white;
+                            border: black 1px solid;
+                            padding: 0.5rem;
+                        }
+
+                        button:hover {
+                            cursor: pointer;
+                            background: black;
+                            color: white;
+                        }
+                    }
+
+                    .cartItemImageWrapper {
+                        img {
+                            width: 100px !important;
+                        }
+                    }
+                }
+            }
+
+            .cartTotal {
+                display: flex;
+                justify-content: space-between;
             }
         }
 

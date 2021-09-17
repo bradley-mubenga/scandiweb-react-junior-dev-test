@@ -136,10 +136,18 @@ export default class App extends Component {
       
       //Incrementing The Cart Quantity If It Exists
       if (doesExist) {
-          let index = this.state.shoppingCart.filter(item => item.id !== product.id);
+        let index = this.state.shoppingCart.findIndex(item => item.id === product.id);
           this.setState({
-              shoppingCart: [ ...index ]
-          });
+            shoppingCart: [
+               ...this.state.shoppingCart.slice(0,index),
+               Object.assign(
+                   {}, 
+                   this.state.shoppingCart[index], 
+                   {...product, qty: this.state.shoppingCart[index].qty + 1}
+                ),
+               ...this.state.shoppingCart.slice(index+1)
+            ]
+        });
       }
   }
 
@@ -147,12 +155,23 @@ export default class App extends Component {
       //Check if its in cart
       const doesExist = this.state.shoppingCart.some(item => item.id === product.id);
       
-      //Incrementing The Cart Quantity If It Exists
+      //Decrementing The Cart Quantity If It Exists
       if (doesExist) {
-          let index = this.state.shoppingCart.filter(item => item.id !== product.id);
-          this.setState({
-              shoppingCart: [ ...index ]
-          });
+        let index = this.state.shoppingCart.findIndex(item => item.id === product.id);
+
+        if (product.qty > 1) {
+            this.setState({
+                shoppingCart: [
+                   ...this.state.shoppingCart.slice(0,index),
+                   Object.assign(
+                       {}, 
+                       this.state.shoppingCart[index], 
+                       {...product, qty: this.state.shoppingCart[index].qty - 1}
+                    ),
+                   ...this.state.shoppingCart.slice(index+1)
+                ]
+            });
+        }
       }
   }
 
@@ -165,6 +184,9 @@ export default class App extends Component {
           returnSymbol={this.returnSymbol}
           currencyIndex={this.state.currencyIndex}
           selectCurrency={this.selectCurrency}
+          shoppingCart={this.state.shoppingCart}
+          INCREMENT_CART={this.INCREMENT_CART}
+          DECREMENT_CART={this.DECREMENT_CART}
         />
         
         <Switch>
@@ -173,6 +195,10 @@ export default class App extends Component {
             category={this.state.category}
             returnSymbol={this.returnSymbol}
             currencyIndex={this.state.currencyIndex}
+            ADD_TO_CART={this.ADD_TO_CART}
+            REMOVE_FROM_CART={this.REMOVE_FROM_CART}
+            INCREMENT_CART={this.INCREMENT_CART}
+            DECREMENT_CART={this.DECREMENT_CART}
             />
           </Route>
           <Route path="/product/:id" component={ProductPage} />
