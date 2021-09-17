@@ -36,7 +36,9 @@ export default class ProductListingPage extends Component {
                                         data.category.products.map((product, index) => (
                                             <Product
                                                 product={product} 
-                                                index={index} 
+                                                index={index}
+                                                returnSymbol={this.props.returnSymbol}
+                                                currencyIndex={this.props.currencyIndex}
                                             />
                                         ))
                                     }

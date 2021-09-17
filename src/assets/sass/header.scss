@@ -66,6 +66,42 @@ nav {
         .dropdownMenu {
             background: white;
             color: black;
+            width: 114px;
+            top: 50px;
+            right: 50px;
+            padding: 10px 20px;
+            line-height: 50px;
+            position: absolute;
+            box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.250),
+                        -1px -1px 7px rgba(0, 0, 0, 0.250);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+
+            li {
+                width: 100%;
+                display: block;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 160%;
+            }
+
+            li:hover {
+                cursor: pointer;
+                color: #5ECE7B;
+            }
+        }
+
+        .show {
+            opacity: 1;
+            visibility: visible;
+            top: 65px;
+        }
+
+        .dropdownCart {
+            background: white;
+            color: black;
             width: 180px;
             top: 85px;
             right: 20px;
@@ -83,7 +119,7 @@ nav {
             }
         }
 
-        .show {
+        .cartShow {
             opacity: 1;
             visibility: visible;
             top: 65px;

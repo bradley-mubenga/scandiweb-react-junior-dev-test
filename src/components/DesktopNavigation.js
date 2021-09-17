@@ -52,6 +52,8 @@ export default class DesktopNavigation extends Component {
                             <CurrencySelector 
                                 click={this.props.click}
                                 handleCurrency={this.props.handleCurrency}
+                                returnSymbol={this.props.returnSymbol}
+                                selectCurrency={this.props.selectCurrency}
                             />
                         </li>
                         <li>

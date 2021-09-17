@@ -16,15 +16,69 @@ export default class App extends Component {
       super(props)
       this.state = {
           category: 'all',
-          shoppingCart: []
+          shoppingCart: [],
+          currencyIndex: 0 //Make sure to save this to local storage as well.
       }
   }
 
   switchCategory = (category) => {
       this.setState({
           category
-      })
+      });
   }
+
+  selectCurrency = (isoCode) => {
+    if (isoCode === "USD") {
+        this.setState({
+            currencyIndex: 0
+        });
+    } 
+
+    else if (isoCode === "GBP") {
+        this.setState({
+            currencyIndex: 1
+        });
+    }
+
+    else if (isoCode === "AUD") {
+        this.setState({
+            currencyIndex: 2
+        });
+    }
+
+    else if (isoCode === "JPY") {
+        this.setState({
+            currencyIndex: 3
+        });
+    }
+
+    else if (isoCode === "RUB") {
+        this.setState({
+            currencyIndex: 4
+        });
+    }
+  }
+
+  returnSymbol = (isoCode) => {
+    if (isoCode === "USD") {
+        return "$";
+    } 
+    else if (isoCode === "GBP") {
+        return "£";
+    }
+
+    else if (isoCode === "AUD") {
+        return "A$";
+    }
+
+    else if (isoCode === "JPY") {
+        return "¥";
+    }
+
+    else if (isoCode === "RUB") {
+        return "₽";
+    }
+}
 
   ADD_TO_CART = (product) => {
     //Check if its in cart
@@ -108,11 +162,18 @@ export default class App extends Component {
         <Header
           switchCategory={this.switchCategory}
           category={this.state.category}
+          returnSymbol={this.returnSymbol}
+          currencyIndex={this.state.currencyIndex}
+          selectCurrency={this.selectCurrency}
         />
         
         <Switch>
           <Route exact path="/">
-            <CategoryPage category={this.state.category}/>
+            <CategoryPage 
+            category={this.state.category}
+            returnSymbol={this.returnSymbol}
+            currencyIndex={this.state.currencyIndex}
+            />
           </Route>
           <Route path="/product/:id" component={ProductPage} />
         </Switch>

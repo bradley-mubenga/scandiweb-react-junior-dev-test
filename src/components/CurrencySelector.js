@@ -35,8 +35,11 @@ export default class CurrencySelector extends Component {
                                         data.currencies.map((currency, index) => (
                                             <li 
                                             key={index} 
-                                            onClick={() => this.props.handleCurrency(false)}
-                                            >{currency}</li>
+                                            onClick={() => {
+                                                this.props.handleCurrency(false)
+                                                this.props.selectCurrency(currency)
+                                            }}
+                                            >{this.props.returnSymbol(currency)} {currency}</li>
                                         ))
                                     }
                                 </ul>
