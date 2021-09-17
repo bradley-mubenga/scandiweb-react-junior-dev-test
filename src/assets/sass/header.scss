@@ -27,19 +27,88 @@ nav {
         list-style-type: none;
 
         a {
+            color: black;
+            font-size: 16px;
+            font-weight: 400;
+            margin-left: 32px;
             text-decoration: none;
-            padding: 9px 15px;
             transition: all 0.3s ease;
         }
 
+        a.active{
+            color: #5ECE7B;
+            padding-bottom: 22px;
+            border-bottom: 2px solid #5ECE7B;
+        }
+
+        li {
+            .shoppingCart:hover {
+                cursor: pointer;
+            }
+
+            .currencySelector {
+                margin-right: 35px;
+
+                img.dollarSign {
+                    transform: translateY(5px);
+                }
+                img.chevron {
+                    position: absolute;
+                    transform: translateY(30px);
+                }
+            }
+
+            .currencySelector:hover {
+                cursor: pointer;
+            }
+        }
+
         .dropdownMenu {
-            background: black;
-            color:white;
+            background: white;
+            color: black;
+            width: 114px;
+            top: 50px;
+            right: 50px;
+            padding: 10px 20px;
+            line-height: 50px;
+            position: absolute;
+            box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.250),
+                        -1px -1px 7px rgba(0, 0, 0, 0.250);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+
+            li {
+                width: 100%;
+                display: block;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 160%;
+            }
+
+            li:hover {
+                cursor: pointer;
+                color: #5ECE7B;
+            }
+        }
+
+        .show {
+            opacity: 1;
+            visibility: visible;
+            top: 65px;
+        }
+
+        .dropdownCart {
+            background: white;
+            color: black;
             width: 180px;
             top: 85px;
             right: 20px;
             line-height: 45px;
             position: absolute;
+            box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.250),
+                        -1px -1px 7px rgba(0, 0, 0, 0.250);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -50,10 +119,115 @@ nav {
             }
         }
 
-        .show {
+        .cartShow {
             opacity: 1;
             visibility: visible;
             top: 65px;
         }
+    }
+
+    .logoWrapper {
+        display: flex;
+        transform: translateX(-80px);
+        .logoImage:hover {
+            cursor: pointer;
+        }
+    }
+
+    .middle {
+        padding: 0 32px;
+    }
+
+    .mobileNavigation {
+        background: white;
+        color: black;
+        padding: 25px 25px;
+        width: 100vw;
+        height: 100vh;
+        top: 0px;
+        right: 0px;
+        line-height: 45px;
+        position: absolute;
+        box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.250),
+                    -1px -1px 7px rgba(0, 0, 0, 0.250);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+
+        li {
+            list-style-type: none;
+        }
+    }
+
+    .navigationMobile {
+        padding: 20px 0px;
+    }
+
+    .menuWrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .menuWrapper:hover {
+        cursor: pointer;
+    }
+
+    .closeWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .closeWrapper img:hover {
+        cursor: pointer;
+    }
+
+    .showMobile {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+//RESPONSIVE
+// X-Small devices (portrait phones, less than 576px)
+@media (min-width: 250px) {
+    .logoWrapper {
+        display: flex !important;
+        transform: translateX(0) !important;
+        .logoImage:hover {
+            cursor: pointer;
+        }
+    }
+
+    .navigationDesktop {
+        display: none !important;
+    }
+
+    .navigationWrapper {
+        padding: 0 25px !important;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .logoWrapper {
+        display: flex;
+        transform: translateX(-80px) !important;
+        .logoImage:hover {
+            cursor: pointer;
+        }
+    }
+    
+    .navigationDesktop {
+        display: flex !important;
+    }
+
+    .navigationMobile {
+        display: none !important;
+    }
+
+    .navigationWrapper {
+        padding: 0 50px !important;
     }
 }

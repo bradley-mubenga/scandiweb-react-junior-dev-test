@@ -17,11 +17,17 @@ export default class ProductPage extends Component {
                 
                 return (
                     <div>
-                    <h1>{data.product.name}</h1>
+                        <h1>{data.product.name}</h1>
+                        <h1>{data.product.name}</h1>
+                        <h1>{data.product.name}</h1>
+
+                        <button className="">ADD TO CARD</button>
                     </div>
                 )
                 }}
             </Query>
         )
     }
-}
+};
+
+

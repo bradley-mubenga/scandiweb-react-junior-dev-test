@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 
-//React Router
-import { Link } from 'react-router-dom';
-
 //SCSS
 import '../assets/sass/header.scss';
 
 //Components
-import ShoppingCart from './ShoppingCart';
-import CurrencySelector from './CurrencySelector';
+import MobileNavigation from './MobileNavigation';
+import DesktopNavigation from './DesktopNavigation';
 
 export default class Header extends Component {
     constructor(props){
         super(props)
         this.state = {
             currencyClick: false,
-            cartClick: false
+            cartClick: false,
+            mobile: false
         };
     }
 
@@ -33,47 +31,36 @@ export default class Header extends Component {
         });
     }
 
+    handleMobile = (state) => {
+        this.setState({
+            mobile: state
+        });
+    }
+
+    componentDidUpdate(){
+    }
+
     render() {
         return (
             <nav>
                 <div className="navigationWrapper">
-                    <div>
-                        <ul className="navigationLinks">
-                            <li>
-                                <Link to="/" onClick={() => this.props.switchCategory('all')}>All</Link>
-                            </li>
-                            <li>
-                                <Link to="/" onClick={() => this.props.switchCategory('tech')}>Tech</Link>
-                            </li>
-                            <li>
-                                <Link to="/" onClick={() => this.props.switchCategory('clothes')}>Clothes</Link>
-                            </li>
-                        </ul>
-                    </div>
+                    <DesktopNavigation
+                        category={this.props.category}
+                        switchCategory={this.props.switchCategory}
+                        click={this.state.currencyClick}
+                        handleCurrency={this.handleCurrency}
+                        cartClick={this.state.cartClick}
+                        handleCart={this.handleCart}
+                        returnSymbol={this.props.returnSymbol}
+                        selectCurrency={this.props.selectCurrency}
+                    />
 
-                    <div>
-                        <Link to="/">
-                            <img src={""} alt="e-commerce-logo"/>
-                        </Link>
-                    </div>
-
-                    <div>
-                        <ul className="navigationLinks">
-                            <li>
-                                <ShoppingCart 
-                                    click={this.state.cartClick}
-                                    handleCart={this.handleCart}
-                                />
-                            </li>
-
-                            <li>
-                                <CurrencySelector 
-                                    click={this.state.currencyClick}
-                                    handleCurrency={this.handleCurrency}
-                                />
-                            </li>
-                        </ul>
-                    </div>
+                    <MobileNavigation 
+                        mobile={this.state.mobile}
+                        handleMobile={this.handleMobile}
+                        category={this.props.category}
+                        switchCategory={this.props.switchCategory}
+                    />
                 </div>
             </nav>
         )

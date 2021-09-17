@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 
-//React Router
-import { Link } from "react-router-dom"
-
 //Apollo GraphQL
 import { Query } from '@apollo/react-components';
 import { QUERY_ALL, QUERY_CLOTHES, QUERY_TECH } from '../graphql/productQuery';
+
+//Components
+import Product from '../components/Product';
+
+//SCSS
+import '../assets/sass/CategoryPage.scss';
 
 export default class ProductListingPage extends Component {
     render() {
@@ -23,17 +26,23 @@ export default class ProductListingPage extends Component {
                         if (error) return <p>Error :(</p>;
 
                         return (
-                            <main>
-                                {
-                                    data.category.products.map((product, index) => (
-                                        <div key={index}>
-                                            <div>          
-                                            <h1>{product.name}</h1>
-                                            <Link to={ `/product/${product.id}`}>Producto!</Link>
-                                            </div>
-                                        </div>
-                                    ))
-                                }
+                            <main className="container categoryPage">
+                                <h1 className="headingDesktop">
+                                    {this.props.category[0].toUpperCase() + this.props.category.slice(1)}
+                                </h1>
+
+                                <div className="products">
+                                    {
+                                        data.category.products.map((product, index) => (
+                                            <Product
+                                                product={product} 
+                                                index={index}
+                                                returnSymbol={this.props.returnSymbol}
+                                                currencyIndex={this.props.currencyIndex}
+                                            />
+                                        ))
+                                    }
+                                </div>
                             </main>
                         )
                     }

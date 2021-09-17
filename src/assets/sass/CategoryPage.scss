@@ -1,0 +1,66 @@
+.categoryPage {
+
+    h1.categoryName {
+        padding: 0 0 2rem 0;
+    }
+
+    .products {
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        grid-template-rows: 33% 33% 33%;
+        grid-gap: 5px;
+        justify-items: center;
+        align-items: center;
+        grid-auto-flow: row;
+    }
+
+    .product {
+        padding: 3rem 2rem;
+        width: 75%;
+        transition: 0.35s ease;
+
+        .addToCartButton {
+            width: 52px;
+            z-index: 10;
+            transform: translate(175px, -35px);
+            transition: 0.25s ease;
+        }
+
+        span {
+            cursor: pointer;
+        }
+
+        span:hover {
+            .addToCartButton {
+                opacity: 0.75;
+            }
+        }
+
+        .productText {
+            transition: 0.25s ease;
+            h4 {
+                font-style: normal;
+                font-weight: 300 !important;
+                font-size: 18px !important;
+                line-height: 160% !important;
+            }
+
+            h5 {
+                font-style: normal;
+                font-weight: bold; //500 Font Weight Does Not Look Like Mockup Design
+                font-size: 18px !important;
+                line-height: 160% !important;
+            }
+        }
+
+        .productText:hover{
+            color: #5ECE7B;
+        }
+    }
+
+    .product:hover{
+        padding: 3rem 2rem;
+        width: 75%;
+        box-shadow: 0 4px 8px #b6b6b6, 0 6px 20px #b6b6b6;
+    }
+}
