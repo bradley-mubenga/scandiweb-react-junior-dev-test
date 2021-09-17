@@ -17,7 +17,7 @@ export default class Product extends Component {
                             className="responsiveImage"
                         />
                         
-                        <span className="">
+                        <span onClick={() => this.props.ADD_TO_CART(this.props.product)}>
                             <img src={addToCart} className="addToCartButton" alt=""/>
                         </span>
                     </div>

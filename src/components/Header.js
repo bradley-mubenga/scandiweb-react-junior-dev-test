@@ -53,6 +53,10 @@ export default class Header extends Component {
                         handleCart={this.handleCart}
                         returnSymbol={this.props.returnSymbol}
                         selectCurrency={this.props.selectCurrency}
+                        shoppingCart={this.props.shoppingCart}
+                        currencyIndex={this.props.currencyIndex}
+                        INCREMENT_CART={this.props.INCREMENT_CART}
+                        DECREMENT_CART={this.props.DECREMENT_CART}
                     />
 
                     <MobileNavigation 

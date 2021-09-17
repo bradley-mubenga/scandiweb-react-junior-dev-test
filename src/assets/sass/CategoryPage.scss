@@ -22,12 +22,16 @@
         .addToCartButton {
             width: 52px;
             z-index: 10;
-            transform: translate(175px, -35px);
             transition: 0.25s ease;
         }
 
         span {
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            margin-top: -30px;
+            margin-right: -10px;
         }
 
         span:hover {
