@@ -36,7 +36,11 @@ export default class Dropdown extends Component {
             <>
                 <div 
                     className="shoppingCart" 
-                    onClick={() => this.props.handleCart(!this.props.cartClick)}
+                    onClick={() =>  {
+                        this.props.handleCart(!this.props.cartClick)
+                        this.props.overlayChange(!this.props.overlay)
+                        }
+                    }
                 >
                     <img className="cartImage" src={cart} alt="shopping-cart" />
                 </div>
@@ -57,8 +61,12 @@ export default class Dropdown extends Component {
                         shoppingCart={this.props.shoppingCart}
                         INCREMENT_CART={this.props.INCREMENT_CART}
                         DECREMENT_CART={this.props.DECREMENT_CART}
+                        REMOVE_FROM_CART={this.props.REMOVE_FROM_CART}
+                        handleCart={this.props.handleCart}
                         product={product}
                         index={index}
+                        overlayChange={this.props.overlayChange}
+                        overlay={this.props.overlay}
                         />
                     ))}
                     </div>

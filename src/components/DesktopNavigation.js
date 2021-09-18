@@ -65,6 +65,9 @@ export default class DesktopNavigation extends Component {
                                 returnSymbol={this.props.returnSymbol}
                                 INCREMENT_CART={this.props.INCREMENT_CART}
                                 DECREMENT_CART={this.props.DECREMENT_CART}
+                                REMOVE_FROM_CART={this.props.REMOVE_FROM_CART}
+                                overlayChange={this.props.overlayChange}
+                                overlay={this.props.overlay}
                             />
                         </li>
                     </ul>
