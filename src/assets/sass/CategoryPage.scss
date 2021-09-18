@@ -68,3 +68,14 @@
         box-shadow: 0 4px 8px #b6b6b6, 0 6px 20px #b6b6b6;
     }
 }
+
+.overlay {
+    opacity: 0.3;
+    transition: ease-in-out 0.4s;
+    .product:hover{
+        padding: 3rem 2rem;
+        width: 75%;
+        box-shadow: 0 0 0 #b6b6b6, 0 0 0 #b6b6b6;
+    }
+    position: fixed;
+}

@@ -17,8 +17,15 @@ export default class App extends Component {
       this.state = {
           category: 'all',
           shoppingCart: [],
-          currencyIndex: 0 //Make sure to save this to local storage as well.
+          currencyIndex: 0, //Make sure to save this to local storage as well.
+          overlay: false
       }
+  }
+
+  overlayChange = (state) => {
+    this.setState({
+        overlay: state
+    })
   }
 
   switchCategory = (category) => {
@@ -110,7 +117,7 @@ export default class App extends Component {
             ...this.state,
             shoppingCart: [
                 ...this.state.shoppingCart,
-                {...product, qty: 1}
+                {...product, qty: 1, attributes: product.attributes}
             ]
         });
     }
@@ -175,6 +182,9 @@ export default class App extends Component {
       }
   }
 
+  componentDidUpdate() {
+    console.log(this.state.shoppingCart)
+}
   render() {
     return (
       <Router>
@@ -187,6 +197,9 @@ export default class App extends Component {
           shoppingCart={this.state.shoppingCart}
           INCREMENT_CART={this.INCREMENT_CART}
           DECREMENT_CART={this.DECREMENT_CART}
+          REMOVE_FROM_CART={this.REMOVE_FROM_CART}
+          overlayChange={this.overlayChange}
+          overlay={this.state.overlay}
         />
         
         <Switch>
@@ -199,6 +212,8 @@ export default class App extends Component {
             REMOVE_FROM_CART={this.REMOVE_FROM_CART}
             INCREMENT_CART={this.INCREMENT_CART}
             DECREMENT_CART={this.DECREMENT_CART}
+            overlay={this.state.overlay}
+            overlayChange={this.overlayChange}
             />
           </Route>
           <Route path="/product/:id" component={ProductPage} />

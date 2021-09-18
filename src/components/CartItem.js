@@ -29,7 +29,10 @@ export default class CartItem extends Component {
                     <div className="cartLink">
                         <Link 
                             to={ `/product/${this.props.product.id}`}
-                            onClick={() => this.props.handleCart(false)}
+                            onClick={() => {
+                                this.props.handleCart(false)
+                                this.props.overlayChange(!this.props.overlay)
+                            }}
                         >
                             <h5>{this.props.product.brand} {this.props.product.name}</h5>
                         </Link>
@@ -70,7 +73,7 @@ export default class CartItem extends Component {
                         />
 
                         <div className="qtyButtons">
-                            <button>Remove</button>
+                            <button onClick={() => this.props.REMOVE_FROM_CART(this.props.product)}>Remove</button>
                         </div>
                     </div>
                 </div>

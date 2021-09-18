@@ -57,6 +57,9 @@ export default class Header extends Component {
                         currencyIndex={this.props.currencyIndex}
                         INCREMENT_CART={this.props.INCREMENT_CART}
                         DECREMENT_CART={this.props.DECREMENT_CART}
+                        REMOVE_FROM_CART={this.props.REMOVE_FROM_CART}
+                        overlayChange={this.props.overlayChange}
+                        overlay={this.props.overlay}
                     />
 
                     <MobileNavigation 

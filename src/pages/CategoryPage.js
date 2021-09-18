@@ -26,7 +26,12 @@ export default class ProductListingPage extends Component {
                         if (error) return <p>Error :(</p>;
 
                         return (
-                            <main className="container categoryPage">
+                            <main className={
+                                this.props.overlay 
+                                ? "container categoryPage overlay" 
+                                : "container categoryPage"
+                                }
+                            >
                                 <h1 className="headingDesktop">
                                     {this.props.category[0].toUpperCase() + this.props.category.slice(1)}
                                 </h1>
