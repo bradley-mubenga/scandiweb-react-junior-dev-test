@@ -44,6 +44,7 @@ export default class ProductListingPage extends Component {
                                                 index={index}
                                                 returnSymbol={this.props.returnSymbol}
                                                 currencyIndex={this.props.currencyIndex}
+                                                overlay={this.props.overlay}
                                                 ADD_TO_CART={this.props.ADD_TO_CART}
                                                 REMOVE_FROM_CART={this.props.REMOVE_FROM_CART}
                                                 INCREMENT_CART={this.props.INCREMENT_CART}

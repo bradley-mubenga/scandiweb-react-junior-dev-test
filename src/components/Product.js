@@ -17,12 +17,18 @@ export default class Product extends Component {
                             className="responsiveImage"
                         />
                         
-                        <span onClick={() => this.props.ADD_TO_CART(this.props.product)}>
+                        <span onClick={
+                            this.props.overlay
+                            ? (null)
+                            : (() => this.props.ADD_TO_CART(this.props.product))
+                        }>
                             <img src={addToCart} className="addToCartButton" alt=""/>
                         </span>
                     </div>
 
-                    <Link to={ `/product/${this.props.product.id}`}>
+                    {
+                        this.props.overlay
+                        ? (
                         <div className="productText">
                             <h4>{this.props.product.brand} {this.props.product.name}</h4>
                             {/*Have A Function With A Switch Statement That Takes The Case Of The Currency ISO And Returns The Currency Symbol*/}
@@ -31,7 +37,20 @@ export default class Product extends Component {
                                 {this.props.product.prices[this.props.currencyIndex].amount
                             }</h5>
                         </div>
-                    </Link>
+                        )
+                        : (
+                        <Link to={ `/product/${this.props.product.id}`}>
+                            <div className="productText">
+                                <h4>{this.props.product.brand} {this.props.product.name}</h4>
+                                {/*Have A Function With A Switch Statement That Takes The Case Of The Currency ISO And Returns The Currency Symbol*/}
+                                <h5>
+                                    {this.props.returnSymbol(this.props.product.prices[this.props.currencyIndex].currency)} 
+                                    {this.props.product.prices[this.props.currencyIndex].amount
+                                }</h5>
+                            </div>
+                        </Link>
+                        )
+                    }
                 </div>
             </div>
         )
