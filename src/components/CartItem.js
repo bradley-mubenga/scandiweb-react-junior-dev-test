@@ -3,11 +3,8 @@ import React, { Component } from 'react';
 //React Router
 import { Link } from "react-router-dom";
 
-//A Function that takes the index of a item
-//Places a active class on the item with the specific index
-
-
 export default class CartItem extends Component {
+    //We must save this state in the Context API
     constructor(props){
         super(props)
         this.state = {
@@ -63,7 +60,7 @@ export default class CartItem extends Component {
         }
     }
 
-    addAttribute = (productName, attributesArray, attributeType, index) => {
+    addAttribute = (productName, attributesArray, attributeType, activeIndex) => {
         let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType );
 
         if (result === undefined) {
@@ -74,41 +71,34 @@ export default class CartItem extends Component {
                         productName: productName, 
                         attributeType: attributeType, 
                         attributes: attributesArray, 
-                        activeIndex: index
+                        activeIndex: activeIndex
                     }
                 ]
             })
         }
 
         else {
-            //Bug is here for some reason the other attributes returns an empty array. Check the definition of filter and the !== or != operands.
-            let otherAttributes = this.state.attributes.filter(product => product.productName !== productName && product.attributeType !== attributeType );
-
-            console.log("Other attri", otherAttributes)
+            //Check if its in cart
+            const doesExist = this.state.attributes.some(product => product.productName === productName && product.attributeType === attributeType );
+            let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType );
             
-            this.setState({
-                attributes: [
-                    ...otherAttributes,
-                    { 
-                        productName: productName, 
-                        attributeType: attributeType, 
-                        attributes: attributesArray, 
-                        activeIndex: index
-                    }
-                ]
-            })
+            //Decrementing The Cart Quantity If It Exists
+            if (doesExist) {
+                let index = this.state.attributes.findIndex(product => product.productName === productName && product.attributeType === attributeType );
+
+                this.setState({
+                    attributes: [
+                    ...this.state.attributes.slice(0,index),
+                    Object.assign(
+                        {}, 
+                        this.state.attributes[index], 
+                        {...result, activeIndex: activeIndex}
+                        ),
+                    ...this.state.attributes.slice(index+1)
+                    ]
+                });
+            }
         }
-    }
-
-    //Create a function that will loop through the attributes state.
-    
-    //find the attribute object with the same id as the cart item.
-    //Check if the active index macthes the current index of the button (attribute value).
-    //Add active class if so, don't add active class if not.
-    //Change the activeIndex to match the index of the button (attribute value).
-
-    componentDidUpdate() {
-        console.log(this.state.attributes)
     }
 
     render() {
