@@ -181,10 +181,7 @@ export default class App extends Component {
         }
       }
   }
-
-  componentDidUpdate() {
-    console.log(this.state.shoppingCart)
-}
+  
   render() {
     return (
       <Router>

@@ -3,23 +3,59 @@ import React, { Component } from 'react';
 //React Router
 import { Link } from "react-router-dom";
 
+//A Function that takes the index of a item
+//Places a active class on the item with the specific index
+
+
 export default class CartItem extends Component {
-    returnAttributes = (items, attributeType) => {
+    constructor(props){
+        super(props)
+        this.state = {
+            attributes: []
+        }
+    }
+
+    returnAttributes = (productName, items, attributeType) => {
         if (attributeType === "Size" || attributeType === "Capacity") {
-            return items.map((attr) => (
+            return items.map((attr, index) => (
                 <button>{attr.value}</button>
             ));
         }
 
         else if (attributeType === "Color") {
-            return items.map((attr) => (
-                <button style={{
-                    background: attr.value,
-                    color: attr.value === "#000000" ? ("White") : ("Black")
-                }}>
+            return items.map((attr, index) => (
+                <button 
+                    style={{
+                        background: attr.value,
+                        color: attr.value === "#000000" ? ("White") : ("Black")
+                    }}
+                    onClick={
+                        () => this.addAttribute(productName, items)
+                    }
+
+                >
                 </button>
             ));
         }
+    }
+
+    addAttribute = (productName, item) => {
+        this.setState({
+            attributes: [
+                ...this.state.attributes,
+                { productName: productName, items: item, activeIndex: 1}
+            ]
+        })
+    }
+
+    //Create a function that will loop through the state.
+    //find the attribute object with the same id as the cart item.
+    //Check if the active index macthes the current index of the button (attribute value).
+    //Add active class if so, don't add active class if not.
+    //Change the activeIndex to match the index of the button (attribute value).
+
+    componentDidUpdate() {
+        console.log(this.state.attributes)
     }
 
     render() {
@@ -48,10 +84,10 @@ export default class CartItem extends Component {
                         {
                             this.props.product.attributes.map((attributes, index) => {
                                 return (
-                                    <div>
+                                    <div key={index}>
                                         <div className="attributesBlock">
                                             {
-                                                this.returnAttributes(attributes.items, attributes.name)
+                                                this.returnAttributes(this.props.product.id, attributes.items, attributes.name)
                                             }
                                         </div>
                                     </div>
