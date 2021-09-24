@@ -16,13 +16,11 @@ export default class ProductPage extends Component {
                 if (error) return <p>Error :(</p>;
                 
                 return (
-                    <div>
-                        <h1>{data.product.name}</h1>
-                        <h1>{data.product.name}</h1>
+                    <main className="container">
                         <h1>{data.product.name}</h1>
 
                         <button className="">ADD TO CARD</button>
-                    </div>
+                    </main>
                 )
                 }}
             </Query>

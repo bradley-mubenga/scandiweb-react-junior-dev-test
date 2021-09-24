@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+//React Router
+import { Link } from 'react-router-dom'
+
 //Images
 import cart from '../assets/images/shopping-cart.png';
 import CartItem from './CartItem';
@@ -75,6 +78,25 @@ export default class Dropdown extends Component {
                         <h5>
                             {this.cartTotal(this.props.shoppingCart, this.props.currencyIndex)}
                         </h5>
+                    </div>
+
+                    <div className="cartButtons">
+                        <div>
+                            <Link 
+                                to="/shopping-cart"
+                                onClick={() =>  {
+                                    this.props.handleCart(!this.props.cartClick)
+                                    this.props.overlayChange(!this.props.overlay)
+                                    }
+                                }
+                            >
+                                <button className="green">VIEW CART</button>
+                            </Link>
+                        </div>
+
+                        <div>
+                            <button>CHECKOUT</button>
+                        </div>
                     </div>
                 </div>
             </>

@@ -105,7 +105,7 @@ nav {
             width: 325px;
             top: 85px;
             right: 2vw;
-            padding: 2rem 1rem;
+            padding: 0.5rem 1rem;
             line-height: 45px;
             position: absolute;
             box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.250),
@@ -217,6 +217,52 @@ nav {
             .cartTotal {
                 display: flex;
                 justify-content: space-between;
+            }
+
+            .cartButtons {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                justify-content: center;
+                align-items: center;
+
+                div {
+                    text-align: center;
+
+                    button {
+                        background: white;
+                        border: black 1px solid;
+                        padding: 0.25rem;
+                        font-size: 14px;
+                        font-weight: 400;
+                        text-align: center;
+                    }
+
+                    button.green {
+                        background: white;
+                        border: #5ECE7B 1px solid;
+                        padding: 0.25rem;
+                        color: #5ECE7B;
+                        font-size: 14px;
+                        font-weight: 400;
+                        text-align: center;
+                    }
+
+                    button:hover {
+                        cursor: pointer;
+                        background: black;
+                        color: white;
+                    }
+
+                    button.green:hover {
+                        background: #5ECE7B;
+                        border: #5ECE7B 1px solid;
+                        padding: 0.25rem;
+                        color: white;
+                        font-size: 14px;
+                        font-weight: 400;
+                        text-align: center;
+                    }
+                }
             }
         }
 
