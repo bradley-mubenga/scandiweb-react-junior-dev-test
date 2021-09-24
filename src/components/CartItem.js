@@ -17,38 +17,91 @@ export default class CartItem extends Component {
 
     returnAttributes = (productName, items, attributeType) => {
         if (attributeType === "Size" || attributeType === "Capacity") {
+            let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType);
+
             return items.map((attr, index) => (
-                <button>{attr.value}</button>
+                <button
+                    onClick={
+                        () => this.addAttribute(productName, items, attributeType, index)
+                    }
+
+                    className={
+                        (result) ? (
+                            result.activeIndex === index
+                            ? "attributeActive"
+                            : ""
+                        ) : ("")
+                    }
+                >{attr.value}</button>
             ));
         }
 
         else if (attributeType === "Color") {
+            let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType);
+
             return items.map((attr, index) => (
                 <button 
                     style={{
                         background: attr.value,
                         color: attr.value === "#000000" ? ("White") : ("Black")
                     }}
+
                     onClick={
-                        () => this.addAttribute(productName, items)
+                        () => this.addAttribute(productName, items, attributeType, index)
                     }
 
+                    className={
+                        (result) ? (
+                            result.activeIndex === index
+                            ? "attributeActive"
+                            : ""
+                        ) : ("")
+                    }
                 >
                 </button>
             ));
         }
     }
 
-    addAttribute = (productName, item) => {
-        this.setState({
-            attributes: [
-                ...this.state.attributes,
-                { productName: productName, items: item, activeIndex: 1}
-            ]
-        })
+    addAttribute = (productName, attributesArray, attributeType, index) => {
+        let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType );
+
+        if (result === undefined) {
+            this.setState({
+                attributes: [
+                    ...this.state.attributes,
+                    { 
+                        productName: productName, 
+                        attributeType: attributeType, 
+                        attributes: attributesArray, 
+                        activeIndex: index
+                    }
+                ]
+            })
+        }
+
+        else {
+            //Bug is here for some reason the other attributes returns an empty array. Check the definition of filter and the !== or != operands.
+            let otherAttributes = this.state.attributes.filter(product => product.productName !== productName && product.attributeType !== attributeType );
+
+            console.log("Other attri", otherAttributes)
+            
+            this.setState({
+                attributes: [
+                    ...otherAttributes,
+                    { 
+                        productName: productName, 
+                        attributeType: attributeType, 
+                        attributes: attributesArray, 
+                        activeIndex: index
+                    }
+                ]
+            })
+        }
     }
 
-    //Create a function that will loop through the state.
+    //Create a function that will loop through the attributes state.
+    
     //find the attribute object with the same id as the cart item.
     //Check if the active index macthes the current index of the button (attribute value).
     //Add active class if so, don't add active class if not.
