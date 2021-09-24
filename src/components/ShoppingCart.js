@@ -67,7 +67,7 @@ export default class Dropdown extends Component {
                         REMOVE_FROM_CART={this.props.REMOVE_FROM_CART}
                         handleCart={this.props.handleCart}
                         product={product}
-                        index={index}
+                        key={index}
                         overlayChange={this.props.overlayChange}
                         overlay={this.props.overlay}
                         />

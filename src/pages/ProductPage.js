@@ -16,7 +16,7 @@ export default class ProductPage extends Component {
                 if (error) return <p>Error :(</p>;
                 
                 return (
-                    <main className="container">
+                    <main className="container" key={data.product.id}>
                         <h1>{data.product.name}</h1>
 
                         <button className="">ADD TO CARD</button>

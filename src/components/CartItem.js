@@ -29,6 +29,8 @@ export default class CartItem extends Component {
                             : ""
                         ) : ("")
                     }
+
+                    key={index}
                 >{attr.value}</button>
             ));
         }
@@ -54,6 +56,8 @@ export default class CartItem extends Component {
                             : ""
                         ) : ("")
                     }
+
+                    key={index}
                 >
                 </button>
             ));
@@ -103,7 +107,7 @@ export default class CartItem extends Component {
 
     render() {
         return (
-            <div className="cartItem" key={this.props.index}>
+            <div className="cartItem">
                 <div className="cartItemText">
                     <div className="cartLink">
                         <h6>

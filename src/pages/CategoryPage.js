@@ -32,6 +32,7 @@ export default class ProductListingPage extends Component {
                                 : "container categoryPage"
                                 }
                             >
+
                                 <h1 className="headingDesktop">
                                     {this.props.category[0].toUpperCase() + this.props.category.slice(1)}
                                 </h1>
@@ -40,8 +41,8 @@ export default class ProductListingPage extends Component {
                                     {
                                         data.category.products.map((product, index) => (
                                             <Product
+                                                key={index}
                                                 product={product} 
-                                                index={index}
                                                 returnSymbol={this.props.returnSymbol}
                                                 currencyIndex={this.props.currencyIndex}
                                                 overlay={this.props.overlay}

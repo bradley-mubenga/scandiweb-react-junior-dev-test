@@ -1,5 +1,4 @@
 .categoryPage {
-
     h1.categoryName {
         padding: 0 0 2rem 0;
     }
@@ -72,6 +71,7 @@
 .overlay {
     opacity: 0.3;
     transition: ease-in-out 0.4s;
+
     .product:hover{
         padding: 3rem 2rem;
         width: 75%;

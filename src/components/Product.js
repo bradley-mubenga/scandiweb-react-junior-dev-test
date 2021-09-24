@@ -9,7 +9,7 @@ import addToCart from '../assets/images/add-to-cart.png'
 export default class Product extends Component {
     render() {
         return (
-            <div className="product" key={this.props.index}>
+            <div className="product">
                 <div>          
                     <div className="productImageWrapper">
                         <img
