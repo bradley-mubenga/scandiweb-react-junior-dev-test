@@ -113,7 +113,7 @@ nav {
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            overflow-y: scroll;
+            overflow-y: scroll !important;
 
             li {
                 width: 100%;
@@ -123,14 +123,20 @@ nav {
             .cartItem {
                 display: grid;
                 grid-template-columns: 50% 50%;
+                grid-template-rows: 50% 50%;
                 align-items: center;
+                align-content: center;
 
                 .cartItemText {
                     .cartLink {
-                        h5 {
+                        h6 {
                             font-size: 16px;
                             font-weight: 300;
                             line-height: 25.6px;
+
+                            a {
+                                margin: 0;
+                            }
                         }
     
                         h4 {

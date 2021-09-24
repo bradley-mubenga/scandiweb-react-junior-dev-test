@@ -27,15 +27,17 @@ export default class CartItem extends Component {
             <div className="cartItem" key={this.props.index}>
                 <div className="cartItemText">
                     <div className="cartLink">
-                        <Link 
-                            to={ `/product/${this.props.product.id}`}
-                            onClick={() => {
-                                this.props.handleCart(false)
-                                this.props.overlayChange(!this.props.overlay)
-                            }}
-                        >
-                            <h5>{this.props.product.brand} {this.props.product.name}</h5>
-                        </Link>
+                        <h6>
+                            <Link 
+                                to={ `/product/${this.props.product.id}`}
+                                onClick={() => {
+                                    this.props.handleCart(false)
+                                    this.props.overlayChange(!this.props.overlay)
+                                }}
+                            >
+                            {this.props.product.brand} {this.props.product.name}
+                            </Link>
+                        </h6>
                     </div>
 
                     <h4>
