@@ -4,10 +4,27 @@ import React, { Component } from 'react';
 import { Query } from '@apollo/react-components';
 import { QUERY_SINGLE_PRODUCT } from '../graphql/productQuery';
 
+//SCSS
+import '../assets/sass/ProductPage.scss';
+
 export default class ProductPage extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            imageIndex: 1
+        }
+    }
+
+    switchImage = (index) => {
+        this.setState({
+            imageIndex: index
+        })
+    }
+
+    //Create A Funtion That Parses JSON HTML Into JSX
+
     render() {
         const { id } = this.props.match.params;
-
         return (
             <Query query={ QUERY_SINGLE_PRODUCT } variables={ { id } }>
                 {/*Here we will pass the data into the components as props if we have large jsx*/}
@@ -17,9 +34,60 @@ export default class ProductPage extends Component {
                 
                 return (
                     <main className="container" key={data.product.id}>
-                        <h1>{data.product.name}</h1>
+                        <div className="productWrapper">
+                            <div className="imagesWrapper">
+                                <div>
+                                    {
+                                        data.product.gallery.map((image, index) => (
+                                            <div 
+                                            onClick={() => this.switchImage(index)}
+                                            key={index}
+                                            className="smallImages"
+                                            >
+                                                <img 
+                                                    src={image} 
+                                                    alt={data.product.name} 
+                                                />
+                                            </div>
+                                        ))
+                                    }
+                                </div>
 
-                        <button className="">ADD TO CARD</button>
+                                <div className="bigImage">
+                                    <img
+                                        src={data.product.gallery[this.state.imageIndex]} 
+                                        alt={data.product.name}
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <div>
+                                    <div className="productText">
+                                        <h4>{data.product.brand} {data.product.name}</h4>
+                                        <h5>
+                                            {this.props.returnSymbol(data.product.prices[this.props.currencyIndex].currency)} 
+                                            {data.product.prices[this.props.currencyIndex].amount}
+                                        </h5>
+
+                                        <div>
+                                            {/*MAKE SURE TO LIFT THE ATTRIBUTES STATE TO THE APP.js I Order to use it in this and other components (Shopping Cart)*/}
+                                        </div>
+                                        
+                                        <div>
+                                            <button
+                                                className="addToCart"
+                                                onClick={() => this.props.ADD_TO_CART(data.product)}
+                                            >ADD TO CART</button>
+                                        </div>
+
+                                        <div>
+                                            {/*Parsed HTML Here*/}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </main>
                 )
                 }}

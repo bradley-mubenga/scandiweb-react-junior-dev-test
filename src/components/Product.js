@@ -31,7 +31,6 @@ export default class Product extends Component {
                         ? (
                         <div className="productText">
                             <h4>{this.props.product.brand} {this.props.product.name}</h4>
-                            {/*Have A Function With A Switch Statement That Takes The Case Of The Currency ISO And Returns The Currency Symbol*/}
                             <h5>
                                 {this.props.returnSymbol(this.props.product.prices[this.props.currencyIndex].currency)} 
                                 {this.props.product.prices[this.props.currencyIndex].amount
@@ -42,7 +41,6 @@ export default class Product extends Component {
                         <Link to={ `/product/${this.props.product.id}`}>
                             <div className="productText">
                                 <h4>{this.props.product.brand} {this.props.product.name}</h4>
-                                {/*Have A Function With A Switch Statement That Takes The Case Of The Currency ISO And Returns The Currency Symbol*/}
                                 <h5>
                                     {this.props.returnSymbol(this.props.product.prices[this.props.currencyIndex].currency)} 
                                     {this.props.product.prices[this.props.currencyIndex].amount

@@ -213,7 +213,21 @@ export default class App extends Component {
             overlayChange={this.overlayChange}
             />
           </Route>
-          <Route path="/product/:id" component={ProductPage} />
+          
+          <Route 
+            path="/product/:id" 
+            render={(props) => 
+                <ProductPage 
+                    {...props}
+                    returnSymbol={this.returnSymbol}
+                    currencyIndex={this.state.currencyIndex}
+                    ADD_TO_CART={this.ADD_TO_CART}
+                    REMOVE_FROM_CART={this.REMOVE_FROM_CART}
+                    INCREMENT_CART={this.INCREMENT_CART}
+                    DECREMENT_CART={this.DECREMENT_CART}
+                />
+            } 
+          />
         </Switch>
       </Router>
     )

@@ -30,7 +30,6 @@ nav {
             color: black;
             font-size: 16px;
             font-weight: 400;
-            margin-left: 32px;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -39,6 +38,10 @@ nav {
             color: #5ECE7B;
             padding-bottom: 22px;
             border-bottom: 2px solid #5ECE7B;
+        }
+
+        a.second {
+            margin: 0 32px;
         }
 
         li {
@@ -209,7 +212,7 @@ nav {
                     }
 
                     button.attributeActive {
-                        opacity: 0.50;
+                        opacity: 0.25;
                     }
                 }
             }
