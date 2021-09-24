@@ -76,6 +76,22 @@
         padding: 3rem 2rem;
         width: 75%;
         box-shadow: 0 0 0 #b6b6b6, 0 0 0 #b6b6b6;
+        cursor: default;
+
+        span {
+            cursor: default;
+        }
+
+        span:hover {
+            .addToCartButton {
+                opacity: 1;
+                cursor: default;
+            }
+        }
+
+        .productText:hover {
+            cursor: default;
+            color: black;
+        }
     }
-    position: fixed;
 }
