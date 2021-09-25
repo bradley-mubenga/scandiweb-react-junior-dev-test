@@ -214,6 +214,10 @@ nav {
                     button.attributeActive {
                         opacity: 0.25;
                     }
+
+                    button.attributeActiveColor {
+                        opacity: 0.25;
+                    }
                 }
             }
 
@@ -335,6 +339,13 @@ nav {
     .showMobile {
         opacity: 1;
         visibility: visible;
+    }
+
+    #circle {
+        width: 100px;
+        height: 100px;
+        background: red;
+        border-radius: 50%
     }
 }
 

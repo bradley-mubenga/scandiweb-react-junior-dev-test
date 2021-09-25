@@ -264,7 +264,7 @@ export default class App extends Component {
                     className={
                         (result) ? (
                             result.activeIndex === index
-                            ? "attributeActive"
+                            ? "attributeActiveColor"
                             : ""
                         ) : ("")
                     }
