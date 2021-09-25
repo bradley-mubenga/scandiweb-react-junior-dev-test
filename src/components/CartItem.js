@@ -4,38 +4,22 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 export default class CartItem extends Component {
-    returnAttributes = (items, attributeType) => {
-        if (attributeType === "Size" || attributeType === "Capacity") {
-            return items.map((attr) => (
-                <button>{attr.value}</button>
-            ));
-        }
-
-        else if (attributeType === "Color") {
-            return items.map((attr) => (
-                <button style={{
-                    background: attr.value,
-                    color: attr.value === "#000000" ? ("White") : ("Black")
-                }}>
-                </button>
-            ));
-        }
-    }
-
     render() {
         return (
-            <div className="cartItem" key={this.props.index}>
+            <div className="cartItem">
                 <div className="cartItemText">
                     <div className="cartLink">
-                        <Link 
-                            to={ `/product/${this.props.product.id}`}
-                            onClick={() => {
-                                this.props.handleCart(false)
-                                this.props.overlayChange(!this.props.overlay)
-                            }}
-                        >
-                            <h5>{this.props.product.brand} {this.props.product.name}</h5>
-                        </Link>
+                        <h6>
+                            <Link 
+                                to={ `/product/${this.props.product.id}`}
+                                onClick={() => {
+                                    this.props.handleCart(false)
+                                    this.props.overlayChange(!this.props.overlay)
+                                }}
+                            >
+                            {this.props.product.brand} {this.props.product.name}
+                            </Link>
+                        </h6>
                     </div>
 
                     <h4>
@@ -46,10 +30,10 @@ export default class CartItem extends Component {
                         {
                             this.props.product.attributes.map((attributes, index) => {
                                 return (
-                                    <div>
+                                    <div key={index}>
                                         <div className="attributesBlock">
                                             {
-                                                this.returnAttributes(attributes.items, attributes.name)
+                                                this.props.returnAttributes(this.props.product.id, attributes.items, attributes.name)
                                             }
                                         </div>
                                     </div>

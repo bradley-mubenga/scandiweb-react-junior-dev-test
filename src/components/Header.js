@@ -60,6 +60,7 @@ export default class Header extends Component {
                         REMOVE_FROM_CART={this.props.REMOVE_FROM_CART}
                         overlayChange={this.props.overlayChange}
                         overlay={this.props.overlay}
+                        returnAttributes={this.props.returnAttributes}
                     />
 
                     <MobileNavigation 

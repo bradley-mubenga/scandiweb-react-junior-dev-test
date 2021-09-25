@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.productWrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+
+    .imagesWrapper {
+        display: flex;
+        align-items: top;
+        gap: 25px;
+
+        .smallImages img {
+            //Check Figma Scale Size
+            max-width: 50px;
+        }
+
+        .bigImage img {
+            //Check Figma Scale Size
+            width: 325px;
+        }
+    }
+
+    .productText {
+        h4:nth-child(1) {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 30px;
+            line-height: 27px;
+            padding-bottom: 10px;
+        }
+
+        h4:nth-child(2) {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 30px;
+            line-height: 27px;
+            padding-bottom: 10px;
+        }
+
+        div {
+            padding-bottom: 25px;
+        }
+
+        div:nth-child(3) {
+            h5:nth-child(1) {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 18px;
+                padding-bottom: 10px;
+            }
+
+            h5:nth-child(2) {
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 18px;
+            }
+        }
+
+        .addToCart {
+            background: #5ECE7B;
+            color: white;
+            padding: 1rem 0.75rem;
+            border: none;
+        }
+    }
+}

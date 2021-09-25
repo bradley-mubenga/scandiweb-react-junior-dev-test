@@ -21,7 +21,11 @@ export default class CurrencySelector extends Component {
                             <div>
                                 <div 
                                     className="currencySelector" 
-                                    onClick={() => this.props.handleCurrency(!this.props.click)}
+                                    onClick={() => { 
+                                        this.props.handleCurrency(!this.props.click)
+                                        this.props.overlayChange(false)
+                                        }
+                                    }
                                 > 
                                     <img className="dollarSign" src={dollarSign} alt="chevron" />
                                     <img className="chevron" src={chevron} alt="chevron" />

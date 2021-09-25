@@ -54,6 +54,8 @@ export default class DesktopNavigation extends Component {
                                 handleCurrency={this.props.handleCurrency}
                                 returnSymbol={this.props.returnSymbol}
                                 selectCurrency={this.props.selectCurrency}
+                                overlayChange={this.props.overlayChange}
+                                overlay={this.props.overlay}
                             />
                         </li>
                         <li>
@@ -68,6 +70,7 @@ export default class DesktopNavigation extends Component {
                                 REMOVE_FROM_CART={this.props.REMOVE_FROM_CART}
                                 overlayChange={this.props.overlayChange}
                                 overlay={this.props.overlay}
+                                returnAttributes={this.props.returnAttributes}
                             />
                         </li>
                     </ul>

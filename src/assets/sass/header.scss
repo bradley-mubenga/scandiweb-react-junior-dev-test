@@ -30,7 +30,6 @@ nav {
             color: black;
             font-size: 16px;
             font-weight: 400;
-            margin-left: 32px;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -39,6 +38,10 @@ nav {
             color: #5ECE7B;
             padding-bottom: 22px;
             border-bottom: 2px solid #5ECE7B;
+        }
+
+        a.second {
+            margin: 0 32px;
         }
 
         li {
@@ -105,7 +108,7 @@ nav {
             width: 325px;
             top: 85px;
             right: 2vw;
-            padding: 2rem 1rem;
+            padding: 0.5rem 1rem;
             line-height: 45px;
             position: absolute;
             box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.250),
@@ -113,7 +116,7 @@ nav {
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            overflow-y: scroll;
+            overflow-y: scroll !important;
 
             li {
                 width: 100%;
@@ -123,14 +126,20 @@ nav {
             .cartItem {
                 display: grid;
                 grid-template-columns: 50% 50%;
+                grid-template-rows: 50% 50%;
                 align-items: center;
+                align-content: center;
 
                 .cartItemText {
                     .cartLink {
-                        h5 {
+                        h6 {
                             font-size: 16px;
                             font-weight: 300;
                             line-height: 25.6px;
+
+                            a {
+                                margin: 0;
+                            }
                         }
     
                         h4 {
@@ -156,6 +165,7 @@ nav {
                     align-items: center;
 
                     .qtyButtons {
+                        text-align: center;
                         button {
                             background: white;
                             border: black 1px solid;
@@ -200,12 +210,62 @@ nav {
                         background: black;
                         color: white;
                     }
+
+                    button.attributeActive {
+                        opacity: 0.25;
+                    }
                 }
             }
 
             .cartTotal {
                 display: flex;
                 justify-content: space-between;
+            }
+
+            .cartButtons {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                justify-content: center;
+                align-items: center;
+
+                div {
+                    text-align: center;
+
+                    button {
+                        background: white;
+                        border: black 1px solid;
+                        padding: 0.25rem;
+                        font-size: 14px;
+                        font-weight: 400;
+                        text-align: center;
+                    }
+
+                    button.green {
+                        background: white;
+                        border: #5ECE7B 1px solid;
+                        padding: 0.25rem;
+                        color: #5ECE7B;
+                        font-size: 14px;
+                        font-weight: 400;
+                        text-align: center;
+                    }
+
+                    button:hover {
+                        cursor: pointer;
+                        background: black;
+                        color: white;
+                    }
+
+                    button.green:hover {
+                        background: #5ECE7B;
+                        border: #5ECE7B 1px solid;
+                        padding: 0.25rem;
+                        color: white;
+                        font-size: 14px;
+                        font-weight: 400;
+                        text-align: center;
+                    }
+                }
             }
         }
 
