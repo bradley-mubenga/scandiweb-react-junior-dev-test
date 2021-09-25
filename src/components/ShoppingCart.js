@@ -70,6 +70,7 @@ export default class Dropdown extends Component {
                         key={index}
                         overlayChange={this.props.overlayChange}
                         overlay={this.props.overlay}
+                        returnAttributes={this.props.returnAttributes}
                         />
                     ))}
                     </div>

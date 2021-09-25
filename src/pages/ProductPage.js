@@ -7,11 +7,14 @@ import { QUERY_SINGLE_PRODUCT } from '../graphql/productQuery';
 //SCSS
 import '../assets/sass/ProductPage.scss';
 
+//HTML React Parse
+import parser from 'html-react-parser';
+
 export default class ProductPage extends Component {
     constructor(props){
         super(props);
         this.state = {
-            imageIndex: 1
+            imageIndex: 0
         }
     }
 
@@ -20,8 +23,6 @@ export default class ProductPage extends Component {
             imageIndex: index
         })
     }
-
-    //Create A Funtion That Parses JSON HTML Into JSX
 
     render() {
         const { id } = this.props.match.params;
@@ -64,14 +65,21 @@ export default class ProductPage extends Component {
                             <div>
                                 <div>
                                     <div className="productText">
-                                        <h4>{data.product.brand} {data.product.name}</h4>
-                                        <h5>
-                                            {this.props.returnSymbol(data.product.prices[this.props.currencyIndex].currency)} 
-                                            {data.product.prices[this.props.currencyIndex].amount}
-                                        </h5>
+                                        <div>
+                                            <h4>{data.product.brand}</h4>
+                                            <h4>{data.product.name}</h4>
+                                        </div>
 
                                         <div>
                                             {/*MAKE SURE TO LIFT THE ATTRIBUTES STATE TO THE APP.js I Order to use it in this and other components (Shopping Cart)*/}
+                                        </div>
+
+                                        <div>
+                                            <h5>PRICE:</h5>
+                                            <h5>
+                                                {this.props.returnSymbol(data.product.prices[this.props.currencyIndex].currency)} 
+                                                {data.product.prices[this.props.currencyIndex].amount}
+                                            </h5>
                                         </div>
                                         
                                         <div>
@@ -82,7 +90,9 @@ export default class ProductPage extends Component {
                                         </div>
 
                                         <div>
-                                            {/*Parsed HTML Here*/}
+                                            {
+                                                parser(data.product.description)
+                                            }
                                         </div>
                                     </div>
                                 </div>

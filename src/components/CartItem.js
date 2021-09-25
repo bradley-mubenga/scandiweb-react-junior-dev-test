@@ -4,107 +4,6 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 export default class CartItem extends Component {
-    //We must save this state in the Context API
-    constructor(props){
-        super(props)
-        this.state = {
-            attributes: []
-        }
-    }
-
-    returnAttributes = (productName, items, attributeType) => {
-        if (attributeType === "Size" || attributeType === "Capacity") {
-            let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType);
-
-            return items.map((attr, index) => (
-                <button
-                    onClick={
-                        () => this.addAttribute(productName, items, attributeType, index)
-                    }
-
-                    className={
-                        (result) ? (
-                            result.activeIndex === index
-                            ? "attributeActive"
-                            : ""
-                        ) : ("")
-                    }
-
-                    key={index}
-                >{attr.value}</button>
-            ));
-        }
-
-        else if (attributeType === "Color") {
-            let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType);
-
-            return items.map((attr, index) => (
-                <button 
-                    style={{
-                        background: attr.value,
-                        color: attr.value === "#000000" ? ("White") : ("Black")
-                    }}
-
-                    onClick={
-                        () => this.addAttribute(productName, items, attributeType, index)
-                    }
-
-                    className={
-                        (result) ? (
-                            result.activeIndex === index
-                            ? "attributeActive"
-                            : ""
-                        ) : ("")
-                    }
-
-                    key={index}
-                >
-                </button>
-            ));
-        }
-    }
-
-    addAttribute = (productName, attributesArray, attributeType, activeIndex) => {
-        let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType );
-
-        if (result === undefined) {
-            this.setState({
-                attributes: [
-                    ...this.state.attributes,
-                    { 
-                        productName: productName, 
-                        attributeType: attributeType, 
-                        attributes: attributesArray, 
-                        activeIndex: activeIndex
-                    }
-                ]
-            })
-        }
-
-        else {
-            //Check if its in cart
-            const doesExist = this.state.attributes.some(product => product.productName === productName && product.attributeType === attributeType );
-            let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType );
-            
-            //Decrementing The Cart Quantity If It Exists
-            if (doesExist) {
-                let index = this.state.attributes.findIndex(product => product.productName === productName && product.attributeType === attributeType );
-
-                this.setState({
-                    attributes: [
-                    ...this.state.attributes.slice(0,index),
-                    Object.assign(
-                        {}, 
-                        this.state.attributes[index], 
-                        {...result, activeIndex: activeIndex}
-                        ),
-                    ...this.state.attributes.slice(index+1)
-                    ]
-                });
-            }
-        }
-    }
-
     render() {
         return (
             <div className="cartItem">
@@ -134,7 +33,7 @@ export default class CartItem extends Component {
                                     <div key={index}>
                                         <div className="attributesBlock">
                                             {
-                                                this.returnAttributes(this.props.product.id, attributes.items, attributes.name)
+                                                this.props.returnAttributes(this.props.product.id, attributes.items, attributes.name)
                                             }
                                         </div>
                                     </div>
