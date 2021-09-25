@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -102,6 +104,16 @@ nav {
             top: 65px;
         }
 
+        .shoppingCart {
+            .cartCounter {
+                display: grid;
+                text-align: center;
+                h6 {
+                    color: white !important;
+                }
+            }
+        }
+
         .dropdownCart {
             background: white;
             color: black;
@@ -192,16 +204,19 @@ nav {
 
                 .attributesBlock {
                     display: grid;
-                    grid-template-columns: 40% 40%;
+                    grid-template-columns: 30% 30%;
                     grid-gap: 12px;
                     padding: 0.5rem 0;
                     
                     button {
                         background: white;
                         border: black 1px solid;
-                        padding: 0.25rem;
+                        padding: 5px;
+                        font-family: Source Sans Pro;
+                        font-style: normal;
+                        font-weight: normal;
                         font-size: 14px;
-                        font-weight: 400;
+                        line-height: 160%;
                         text-align: center;
                     }
 
@@ -212,6 +227,10 @@ nav {
                     }
 
                     button.attributeActive {
+                        opacity: 0.25;
+                    }
+
+                    button.attributeActiveColor {
                         opacity: 0.25;
                     }
                 }
@@ -227,44 +246,38 @@ nav {
                 grid-template-columns: 50% 50%;
                 justify-content: center;
                 align-items: center;
+                gap: 12px;
 
-                div {
+                a button {
+                    background: white;
+                    border: black 1px solid;
+                    padding: 13px 36px;
+                    font-weight: 400;
+                }
+
+                button.green {
+                    background: #5ECE7B;
+                    border: #5ECE7B 1px solid;
+                    padding: 13px 36px;
+                    color: white;
+                    font-size: 14px;
+                    font-weight: 400;
                     text-align: center;
+                }
 
-                    button {
-                        background: white;
-                        border: black 1px solid;
-                        padding: 0.25rem;
-                        font-size: 14px;
-                        font-weight: 400;
-                        text-align: center;
-                    }
+                button:hover {
+                    cursor: pointer;
+                    background: black;
+                    color: white;
+                }
 
-                    button.green {
-                        background: white;
-                        border: #5ECE7B 1px solid;
-                        padding: 0.25rem;
-                        color: #5ECE7B;
-                        font-size: 14px;
-                        font-weight: 400;
-                        text-align: center;
-                    }
-
-                    button:hover {
-                        cursor: pointer;
-                        background: black;
-                        color: white;
-                    }
-
-                    button.green:hover {
-                        background: #5ECE7B;
-                        border: #5ECE7B 1px solid;
-                        padding: 0.25rem;
-                        color: white;
-                        font-size: 14px;
-                        font-weight: 400;
-                        text-align: center;
-                    }
+                button.green:hover {
+                    background: white;
+                    border: #5ECE7B 1px solid;
+                    padding: 13px 36px;
+                    color: #5ECE7B;
+                    font-size: 14px;
+                    font-weight: 400;
                 }
             }
         }
@@ -335,6 +348,28 @@ nav {
     .showMobile {
         opacity: 1;
         visibility: visible;
+    }
+
+    #circle {
+        width: 20px;
+        height: 20px;
+        background: black;
+        color: white !important;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        position: absolute;
+        transform: translate(13px, -55px);
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 16px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
     }
 }
 

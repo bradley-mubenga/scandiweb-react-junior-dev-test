@@ -46,6 +46,11 @@ export default class Dropdown extends Component {
                     }
                 >
                     <img className="cartImage" src={cart} alt="shopping-cart" />
+                    <div className="cartCounter">
+                        <span id="circle">
+                            {this.itemsInCart(this.props.shoppingCart)}
+                        </span>
+                    </div>
                 </div>
                 
                 <div
@@ -82,22 +87,27 @@ export default class Dropdown extends Component {
                     </div>
 
                     <div className="cartButtons">
-                        <div>
-                            <Link 
-                                to="/shopping-cart"
-                                onClick={() =>  {
-                                    this.props.handleCart(!this.props.cartClick)
-                                    this.props.overlayChange(!this.props.overlay)
-                                    }
+                        <Link 
+                            to="/shopping-cart"
+                            onClick={() =>  {
+                                this.props.handleCart(!this.props.cartClick)
+                                this.props.overlayChange(!this.props.overlay)
                                 }
-                            >
-                                <button className="green">VIEW CART</button>
-                            </Link>
-                        </div>
-
-                        <div>
-                            <button>CHECKOUT</button>
-                        </div>
+                            }
+                        >
+                            <button>VIEW CART</button>
+                        </Link>
+                        
+                        <Link 
+                            to="/checkout"
+                            onClick={() =>  {
+                                this.props.handleCart(!this.props.cartClick)
+                                this.props.overlayChange(!this.props.overlay)
+                                }
+                            }
+                        >
+                            <button className="green">CHECKOUT</button>
+                        </Link>
                     </div>
                 </div>
             </>

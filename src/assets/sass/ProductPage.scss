@@ -12,16 +12,24 @@
 
         .smallImages img {
             //Check Figma Scale Size
-            max-width: 50px;
+            max-width: 55px;
+            padding-bottom: 15px;
+        }
+
+        .smallImages img:hover {
+            cursor: pointer;
         }
 
         .bigImage img {
             //Check Figma Scale Size
-            width: 325px;
+            width: 375px;
         }
     }
 
     .productText {
+        display: flex;
+        flex-direction: column;
+
         h4:nth-child(1) {
             font-style: normal;
             font-weight: 600;
@@ -35,21 +43,31 @@
             font-weight: normal;
             font-size: 30px;
             line-height: 27px;
-            padding-bottom: 10px;
         }
 
-        div {
+        .productTextBlock {
             padding-bottom: 25px;
         }
 
+        .robotoText {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 18px;
+        }
+
         div:nth-child(3) {
+            h5 {
+                padding-bottom: 15px;
+            }
+
             h5:nth-child(1) {
                 font-family: Roboto;
                 font-style: normal;
                 font-weight: bold;
                 font-size: 18px;
                 line-height: 18px;
-                padding-bottom: 10px;
             }
 
             h5:nth-child(2) {
@@ -60,11 +78,59 @@
             }
         }
 
+        .productDescription {
+            width: 75%;
+            padding-top: 10px;
+        }
+
         .addToCart {
             background: #5ECE7B;
             color: white;
             padding: 1rem 0.75rem;
             border: none;
+            width: 75%;
+        }
+
+        .addToCart:hover {
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        .attributesBlock {
+            width: 35%;
+        }
+
+        .attributesBlockSquares {
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            grid-gap: 12px;
+            padding: 0.5rem 0;
+            
+            button {
+                background: white;
+                border: black 1px solid;
+                padding: 0.25rem;
+                font-size: 14px;
+                font-weight: 400;
+                text-align: center;
+            }
+
+            button:hover {
+                cursor: pointer;
+                background: black;
+                color: white;
+            }
+
+            button.attributeActive {
+                background: black;
+                color: white;
+            }
+
+            button.attributeActiveColor {
+                opacity: 0.25;
+            }
+
+            
         }
     }
 }
