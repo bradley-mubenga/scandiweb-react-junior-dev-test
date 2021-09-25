@@ -12,13 +12,17 @@
 
         .smallImages img {
             //Check Figma Scale Size
-            max-width: 50px;
+            max-width: 55px;
             padding-bottom: 15px;
+        }
+
+        .smallImages img:hover {
+            cursor: pointer;
         }
 
         .bigImage img {
             //Check Figma Scale Size
-            width: 325px;
+            width: 375px;
         }
     }
 
@@ -41,8 +45,8 @@
             line-height: 27px;
         }
 
-        div {
-            padding-bottom: 10px;
+        .productTextBlock {
+            padding-bottom: 25px;
         }
 
         .robotoText {
@@ -76,6 +80,7 @@
 
         .productDescription {
             width: 75%;
+            padding-top: 10px;
         }
 
         .addToCart {
