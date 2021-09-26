@@ -1,0 +1,107 @@
+.pageCartItem {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+
+    .cartPageText {
+        h5:nth-child(1) {
+            font-family: Raleway;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 30px;
+            line-height: 27px;
+            padding-bottom: 16px;
+        }
+
+        h5:nth-child(2) {
+            font-family: Raleway;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 30px;
+            line-height: 27px;
+            padding-bottom: 12px;
+        }
+    }
+
+    .cartPagePrice {
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 18px;
+        padding-bottom: 12px;
+    }
+
+    .pageCartImageQty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sliderWrapper {
+        display: flex;
+        align-items: center;
+
+        .middleImage {
+            img {
+                width: 141px;
+            }
+        }
+
+        .chevron {
+            border: 1px solid black;
+            background: rgb(201, 201, 201);
+
+            img:hover {
+                cursor: pointer;
+            }
+
+        }
+
+        .chevron:hover {
+            border: 1px solid black;
+            background: rgb(0, 0, 0);
+        }
+    }
+
+    .attributesBlockSquares {
+        display: grid;
+        grid-template-columns: 13% 13%;
+        grid-gap: 12px;
+        padding: 0.5rem 0;
+
+        .miscAttributeButton {
+            display: flex;
+            padding: 0.25rem 0;
+            gap: 8px;
+        }
+        
+        button {
+            background: white;
+            border: black 1px solid;
+            padding: 0.45rem 0.25rem;
+            font-size: 14px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: black;
+            color: white;
+        }
+
+        button.attributeActive {
+            background: black;
+            color: white;
+        }
+
+        button.attributeActiveColor {
+            opacity: 0.25;
+        }
+
+        
+    }
+}

@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-
 //SCSS
 import '../src/assets/sass/_global.scss';
-
 //React Router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 //React Components
 import Header from './components/Header';
 import CategoryPage from './pages/CategoryPage';
 import ProductPage from './pages/ProductPage';
+import ShoppingCart from './pages/ShoppingCart';
 
 export default class App extends Component {
     constructor(props){
         super(props)
         this.state = {
             category: 'all',
-            shoppingCart: [],
+            shoppingCart: [], //Store this in local storage
             currencyIndex: 0, //Make sure to save this to local storage as well.
             overlay: false,
             attributes: [] //Save this in the local storage
@@ -225,7 +223,29 @@ export default class App extends Component {
     }
 
     returnAttributes = (productName, items, attributeType) => {
-        if (attributeType === "Size" || attributeType === "Capacity") {
+        if (attributeType === "Size") {
+            let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType);
+
+            return items.map((attr, index) => (
+                <button
+                    onClick={
+                        () => this.addAttribute(productName, items, attributeType, index)
+                    }
+
+                    className={
+                        (result) ? (
+                            result.activeIndex === index
+                            ? "attributeActive"
+                            : ""
+                        ) : ("")
+                    }
+
+                    key={index}
+                >{attr.value}</button>
+            ));
+        }
+
+        else if (attributeType === "Capacity") {
             let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType);
 
             return items.map((attr, index) => (
@@ -274,6 +294,38 @@ export default class App extends Component {
                 </button>
             ));
         }
+
+        else if (attributeType.length > 14) {
+            let result = this.state.attributes.find((product) => product.productName === productName && product.attributeType === attributeType);
+
+            return (
+                <div className="miscAttribute">
+                    <p>{attributeType}</p>
+
+                    <div className="miscAttributeButton">
+                        {
+                            items.map((attr, index) => (
+                                <button
+                                    onClick={
+                                        () => this.addAttribute(productName, items, attributeType, index)
+                                    }
+            
+                                    className={
+                                        (result) ? (
+                                            result.activeIndex === index
+                                            ? "attributeActive"
+                                            : ""
+                                        ) : ("")
+                                    }
+            
+                                    key={index}
+                                >{attr.value}</button>
+                            ))
+                        }
+                    </div>
+                </div>
+            )
+        }
     }
   
   render() {
@@ -311,7 +363,7 @@ export default class App extends Component {
           </Route>
           
           <Route 
-            path="/product/:id" 
+            exact path="/product/:id" 
             render={(props) => 
                 <ProductPage 
                     {...props}
@@ -325,6 +377,18 @@ export default class App extends Component {
                 />
             } 
           />
+          <Route exact path="/shopping-cart">
+              <ShoppingCart 
+                returnSymbol={this.returnSymbol}
+                currencyIndex={this.state.currencyIndex}
+                ADD_TO_CART={this.ADD_TO_CART}
+                REMOVE_FROM_CART={this.REMOVE_FROM_CART}
+                INCREMENT_CART={this.INCREMENT_CART}
+                DECREMENT_CART={this.DECREMENT_CART}
+                returnAttributes={this.returnAttributes}
+                shoppingCart={this.state.shoppingCart}
+              />
+          </Route>
         </Switch>
       </Router>
     )

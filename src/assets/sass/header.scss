@@ -120,7 +120,7 @@ nav {
             width: 325px;
             top: 85px;
             right: 2vw;
-            padding: 0.5rem 1rem;
+            padding: 0.25rem 1rem;
             line-height: 45px;
             position: absolute;
             box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.250),
@@ -181,7 +181,7 @@ nav {
                         button {
                             background: white;
                             border: black 1px solid;
-                            padding: 0.5rem;
+                            padding: 5px;
                         }
 
                         button:hover {
@@ -211,7 +211,7 @@ nav {
                     button {
                         background: white;
                         border: black 1px solid;
-                        padding: 5px;
+                        padding: 1.5px;
                         font-family: Source Sans Pro;
                         font-style: normal;
                         font-weight: normal;
@@ -232,6 +232,20 @@ nav {
 
                     button.attributeActiveColor {
                         opacity: 0.25;
+                    }
+
+                    .miscAttribute {
+                        grid-column-start: span 3;
+                        p {
+                            font-size: 10px;
+                            line-height: 10px;
+                        }
+
+                        .miscAttributeButton {
+                            display: flex;
+                            padding: 0.25rem 0;
+                            gap: 8px;
+                        }
                     }
                 }
             }

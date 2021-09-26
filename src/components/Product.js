@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 //Images
-import addToCart from '../assets/images/add-to-cart.png'
+import addToCart from '../assets/images/add-to-cart.png';
 
 export default class Product extends Component {
     render() {
