@@ -26,6 +26,7 @@ export default class ProductPage extends Component {
 
     render() {
         const { id } = this.props.match.params;
+        
         return (
             <Query query={ QUERY_SINGLE_PRODUCT } variables={ { id } }>
                 {/*Here we will pass the data into the components as props if we have large jsx*/}
@@ -81,6 +82,7 @@ export default class ProductPage extends Component {
                                                                 this.props.returnAttributes(data.product.id, attributes.items, attributes.name)
                                                             }
                                                         </div>
+                                                        {console.log(data.product)}
                                                     </div>
                                                 )
                                             })
