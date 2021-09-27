@@ -21,6 +21,20 @@ export default class App extends Component {
         }
     }
 
+    componentWillMount(){
+        localStorage.getItem('shoppingCart') && this.setState({
+            shoppingCart: JSON.parse(localStorage.getItem('shoppingCart'))
+        });
+
+        localStorage.getItem('attributes') && this.setState({
+            attributes: JSON.parse(localStorage.getItem('attributes'))
+        });
+
+        localStorage.getItem('currencyIndex') && this.setState({
+            currencyIndex: JSON.parse(localStorage.getItem('currencyIndex'))
+        });
+    }
+
     overlayChange = (state) => {
         this.setState({
             overlay: state
@@ -326,6 +340,12 @@ export default class App extends Component {
                 </div>
             )
         }
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        localStorage.setItem('shoppingCart', JSON.stringify(nextState.shoppingCart));
+        localStorage.setItem('attributes', JSON.stringify(nextState.attributes));
+        localStorage.setItem('currencyIndex', JSON.stringify(nextState.currencyIndex));
     }
   
   render() {

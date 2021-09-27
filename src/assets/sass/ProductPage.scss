@@ -96,6 +96,18 @@
             opacity: 0.5;
         }
 
+        .addToCartDim {
+            background: #5ece7c4b;
+            color: white;
+            padding: 1rem 0.75rem;
+            border: none;
+            width: 75%;
+        }
+
+        .addToCartDim:hover {
+            opacity: 1;
+        }
+
         .attributesBlock {
             width: 35%;
         }

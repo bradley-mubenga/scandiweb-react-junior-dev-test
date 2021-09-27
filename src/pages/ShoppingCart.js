@@ -12,7 +12,7 @@ export default class ShoppingCart extends Component {
     render() {
         return (
             <main className="container">
-                <h1>CART</h1>
+                <h1 className="heading">CART</h1>
 
                 {
                     this.props.shoppingCart.length > 0
@@ -53,13 +53,16 @@ export default class ShoppingCart extends Component {
                             <div>
                                 <div className="pageCartImageQty">
                                     <div className="qtyButtons">
-                                        <button onClick={() => this.props.INCREMENT_CART(item.product)}>+</button>
+                                        <button onClick={() => this.props.INCREMENT_CART(item)}>+</button>
                                         <h6>{item.qty}</h6>
-                                        <button onClick={() => this.props.DECREMENT_CART(item.product)}>-</button>
+                                        <button onClick={() => this.props.DECREMENT_CART(item)}>-</button>
                                     </div>
 
-                                    <div>
+                                    <div className="sliderAndButton">
                                         <ImageSlider images={item.gallery}/>
+                                        <button
+                                            onClick={() => this.props.REMOVE_FROM_CART(item)}
+                                        >Remove From Cart</button>
                                     </div>
                                 </div>
                             </div>

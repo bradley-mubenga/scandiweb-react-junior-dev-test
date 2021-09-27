@@ -82,7 +82,6 @@ export default class ProductPage extends Component {
                                                                 this.props.returnAttributes(data.product.id, attributes.items, attributes.name)
                                                             }
                                                         </div>
-                                                        {console.log(data.product)}
                                                     </div>
                                                 )
                                             })
@@ -98,10 +97,20 @@ export default class ProductPage extends Component {
                                         </div>
                                         
                                         <div className="productTextBlock">
-                                            <button
-                                                className="addToCart"
-                                                onClick={() => this.props.ADD_TO_CART(data.product)}
-                                            >ADD TO CART</button>
+                                            {
+                                                data.product.inStock
+                                                ? (
+                                                <button
+                                                    className="addToCart"
+                                                    onClick={() => this.props.ADD_TO_CART(data.product)}
+                                                >ADD TO CART</button>
+                                                )
+                                                : (
+                                                <button
+                                                    className="addToCartDim"
+                                                >ADD TO CART</button>
+                                                )
+                                            }
                                         </div>
 
                                         <div className="productDescription productTextBlock">

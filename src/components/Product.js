@@ -9,21 +9,38 @@ import addToCart from '../assets/images/add-to-cart.png';
 export default class Product extends Component {
     render() {
         return (
-            <div className="product">
+            <div className={
+                this.props.product.inStock
+                ? ("product")
+                : ("product out-of-stock")
+            }>
                 <div>          
                     <div className="productImageWrapper">
-                        <img
-                            alt={this.props.product.name} src={this.props.product.gallery[0]}
-                            className="responsiveImage"
-                        />
-                        
-                        <span onClick={
-                            this.props.overlay
-                            ? (null)
-                            : (() => this.props.ADD_TO_CART(this.props.product))
-                        }>
-                            <img src={addToCart} className="addToCartButton" alt=""/>
-                        </span>
+                        <div>
+                            <img
+                                alt={this.props.product.name} src={this.props.product.gallery[0]}
+                                className="responsiveImage"
+                            />
+                            {
+                                this.props.product.inStock
+                                ? ("")
+                                : (<h5 className="outOfStock">OUT OF STOCK</h5>)
+                            }
+                        </div>
+
+                        {
+                            this.props.product.inStock
+                            ? (
+                                <span onClick={
+                                    this.props.overlay
+                                    ? (null)
+                                    : (() => this.props.ADD_TO_CART(this.props.product))
+                                }>
+                                    <img src={addToCart} className="addToCartButton" alt=""/>
+                                </span>
+                            )
+                            : ("")
+                        }
                     </div>
 
                     {
