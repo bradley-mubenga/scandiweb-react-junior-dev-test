@@ -43,6 +43,26 @@
         align-items: center;
         justify-content: center;
 
+        .sliderAndButton {
+            text-align: center;
+
+            button{
+                background: white;
+                padding: 0.5rem 0.5rem;
+                border: 1px solid black;
+                color: black;
+            }
+
+            button:hover {
+                cursor: pointer;
+                background: black;
+                padding: 0.5rem 0.5rem;
+                border: none;
+                color: white;
+                border: 1px solid black;
+            }
+        }
+
         .qtyButtons {
             padding-right: 15px;
             text-align: center;
@@ -77,12 +97,12 @@
 
         .chevron {
             border: 1px solid black;
-            background: rgb(201, 201, 201);
+            background: black;
+        }
 
-            img:hover {
-                cursor: pointer;
-            }
-
+        .chevron:hover {
+            cursor: pointer;
+            background: rgba(58, 58, 58, 0.45);
         }
 
         .chevron:hover {

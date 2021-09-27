@@ -55,10 +55,10 @@ export default class ImageSlider extends Component {
                 <div className="sliderWrapper">
                         <div
                         className="chevron"
+                        onClick={() => this.prevImage(this.state.currentImage)}
                         >
                             <img 
                                 src={rightChevron}
-                                onClick={() => this.nextImage(this.state.currentImage)}
                                 alt="chevron-right"
                             />
                         </div>
@@ -72,7 +72,7 @@ export default class ImageSlider extends Component {
 
                         <div 
                         className="chevron"
-                        onClick={() => this.prevImage(this.state.currentImage)}
+                        onClick={() => this.nextImage(this.state.currentImage)}
                         >
                             <img src={leftChevron} alt="chevron-left"/>
                         </div>

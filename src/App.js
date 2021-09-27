@@ -387,6 +387,7 @@ export default class App extends Component {
                 DECREMENT_CART={this.DECREMENT_CART}
                 returnAttributes={this.returnAttributes}
                 shoppingCart={this.state.shoppingCart}
+                REMOVE_FROM_CART={this.REMOVE_FROM_CART}
               />
           </Route>
         </Switch>
