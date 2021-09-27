@@ -21,6 +21,20 @@ export default class App extends Component {
         }
     }
 
+    componentWillMount(){
+        localStorage.getItem('shoppingCart') && this.setState({
+            shoppingCart: JSON.parse(localStorage.getItem('shoppingCart'))
+        });
+
+        localStorage.getItem('attributes') && this.setState({
+            attributes: JSON.parse(localStorage.getItem('attributes'))
+        });
+
+        localStorage.getItem('currencyIndex') && this.setState({
+            currencyIndex: JSON.parse(localStorage.getItem('currencyIndex'))
+        });
+    }
+
     overlayChange = (state) => {
         this.setState({
             overlay: state
@@ -327,6 +341,12 @@ export default class App extends Component {
             )
         }
     }
+
+    componentWillUpdate(nextProps, nextState) {
+        localStorage.setItem('shoppingCart', JSON.stringify(nextState.shoppingCart));
+        localStorage.setItem('attributes', JSON.stringify(nextState.attributes));
+        localStorage.setItem('currencyIndex', JSON.stringify(nextState.currencyIndex));
+    }
   
   render() {
     return (
@@ -387,7 +407,6 @@ export default class App extends Component {
                 DECREMENT_CART={this.DECREMENT_CART}
                 returnAttributes={this.returnAttributes}
                 shoppingCart={this.state.shoppingCart}
-                REMOVE_FROM_CART={this.REMOVE_FROM_CART}
               />
           </Route>
         </Switch>
