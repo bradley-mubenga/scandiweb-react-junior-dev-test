@@ -1,9 +1,13 @@
+.heading {
+    margin-bottom: 59px;
+}
 .pageCartItem {
     display: grid;
     grid-template-columns: 80% 20%;
     align-items: center;
     justify-content: center;
     padding: 20px 0;
+    border-top: 1px rgba(229, 229, 229, 1) solid;
 
     .cartPageText {
         h5:nth-child(1) {
@@ -38,6 +42,27 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        .qtyButtons {
+            padding-right: 15px;
+            text-align: center;
+
+            button {
+                background: white;
+                border: 1px solid black !important;
+                color: color;
+                padding: 10px;
+                border: none;
+            }
+
+            button:hover {
+                cursor: pointer;
+            }
+
+            h6 {
+                padding: 15px 0;
+            }
+        }
     }
 
     .sliderWrapper {

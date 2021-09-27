@@ -11,9 +11,8 @@ export default class ImageSlider extends Component {
         }
     }
 
-    nextImage = (index) => {
+    nextImage = () => {
         let nthIndex = this.props.images.length - 1;
-        console.log(nthIndex)
 
         if (this.state.currentImage === nthIndex) {
             this.setState({
@@ -21,19 +20,33 @@ export default class ImageSlider extends Component {
             })
         }
 
-        else {
+        else if (this.state.currentImage < nthIndex) {
+            let num = this.state.currentImage;
+            num++;
+
             this.setState({
-                currentImage: 2
+                currentImage: num
             })
         }
     }
 
-    prevImage = (index) => {
-        let length = this.props.images.length - 1;
-        console.log("state", this.state.currentImage)
-        this.state.currentImage === length 
-        ? (this.setState({ currentImage: index++ }))
-        : (this.setState({ currentImage: index++ }))
+    prevImage = () => {
+        let nthIndex = this.props.images.length - 1;
+
+        if (this.state.currentImage === 0) {
+            this.setState({
+                currentImage: nthIndex
+            })
+        }
+
+        else if (this.state.currentImage > 0) {
+            let num = this.state.currentImage;
+            num--;
+
+            this.setState({
+                currentImage: num
+            })
+        }
     }
 
     render() {
@@ -46,12 +59,14 @@ export default class ImageSlider extends Component {
                             <img 
                                 src={rightChevron}
                                 onClick={() => this.nextImage(this.state.currentImage)}
+                                alt="chevron-right"
                             />
                         </div>
 
                         <div className="middleImage">
                             <img 
                                 src={this.props.images[this.state.currentImage]}
+                                alt="product"
                             />
                         </div>
 
@@ -59,7 +74,7 @@ export default class ImageSlider extends Component {
                         className="chevron"
                         onClick={() => this.prevImage(this.state.currentImage)}
                         >
-                            <img src={leftChevron}/>
+                            <img src={leftChevron} alt="chevron-left"/>
                         </div>
                 </div>
             </div>

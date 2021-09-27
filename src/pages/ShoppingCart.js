@@ -12,7 +12,7 @@ export default class ShoppingCart extends Component {
     render() {
         return (
             <main className="container">
-                <h1>CART</h1>
+                <h1 className="heading">CART</h1>
 
                 {
                     this.props.shoppingCart.length > 0
