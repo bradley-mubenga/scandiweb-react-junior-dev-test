@@ -1,11 +1,8 @@
-import React, { Component } from 'react'
-
+import React, { Component } from 'react';
 //React Router
 import { Link } from 'react-router-dom';
-
 //Images
 import logo from '../assets/images/logo transparent.png';
-
 //Components
 import ShoppingCart from './ShoppingCart';
 import CurrencySelector from './CurrencySelector';

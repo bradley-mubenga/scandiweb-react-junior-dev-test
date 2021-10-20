@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //SCSS
 import '../src/assets/sass/_global.scss';
+import '../src/assets/sass/responsive.scss';
 //React Router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //React Components

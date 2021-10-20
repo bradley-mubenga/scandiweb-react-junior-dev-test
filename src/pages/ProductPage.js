@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-
 //Apollo GraphQL
 import { Query } from '@apollo/react-components';
 import { QUERY_SINGLE_PRODUCT } from '../graphql/productQuery';
-
 //SCSS
 import '../assets/sass/ProductPage.scss';
-
 //HTML React Parse
 import parser from 'html-react-parser';
 
