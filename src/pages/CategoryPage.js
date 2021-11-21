@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 //Apollo GraphQL
 import { Query } from '@apollo/react-components';
 import { QUERY_ALL, QUERY_CLOTHES, QUERY_TECH } from '../graphql/productQuery';
+import { all, tech, clothes } from '../utils/category';
 
 //Components
 import Product from '../components/Product';
@@ -14,9 +15,9 @@ export default class ProductListingPage extends Component {
     render() {
         return (
              <Query query={
-                 (this.props.category === 'all') ? QUERY_ALL
-                 : (this.props.category === 'tech') ? QUERY_TECH
-                 : (this.props.category === 'clothes') ? QUERY_CLOTHES
+                 (this.props.category === all) ? QUERY_ALL
+                 : (this.props.category === tech) ? QUERY_TECH
+                 : (this.props.category === clothes) ? QUERY_CLOTHES
                  : (null)
              }>
                 {/*Here we will pass the data into the components as props if we have large jsx*/}
