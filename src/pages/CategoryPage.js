@@ -34,7 +34,6 @@ export default class ProductListingPage extends Component {
                     { category: this.props.category }
                 }
             >
-            
                 {/*Here we will pass the data into the components as props if we have large jsx*/}
                 {
                     ({loading, error, data}) => {
