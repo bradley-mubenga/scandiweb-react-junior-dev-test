@@ -38,6 +38,7 @@ export default class Header extends Component {
     }
 
     componentDidUpdate(){
+        console.log(this.props.shoppingCart)
     }
 
     render() {
