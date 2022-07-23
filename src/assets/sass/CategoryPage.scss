@@ -1,9 +1,11 @@
-.categoryPage {
-    h1.categoryName {
+.categoryPage 
+{
+    h1.categoryName 
+    {
         padding: 0 0 2rem 0;
     }
-
-    .products {
+    .products 
+    {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: minmax(444px, auto);
@@ -11,63 +13,56 @@
         align-items: center;
 
     }
-
-    .product {
+    .product 
+    {
         padding: 3rem 2rem;
         width: 75%;
         transition: 0.35s ease;
 
-        .productCardImage {
+        .productCardImage 
+        {
             width: 100%;
             max-width: 330px;
             height: auto;
         }
-
-        .addToCartButton {
+        .addToCartButton 
+        {
             width: 52px;
             transition: 0.25s ease;
         }
-
-        span {
+        span 
+        {
             display: flex;
             align-items: center;
             justify-content: flex-end;
             margin-top: -30px;
             margin-right: -10px;
         }
-
-        span:hover {
-            .addToCartButton {
-                opacity: 0.75;
-            }
-        }
-
-        .productText {
+        .productText 
+        {
             transition: 0.25s ease;
-            h4 {
+            h4 
+            {
                 font-style: normal;
                 font-weight: 300 !important;
                 font-size: 18px !important;
                 line-height: 160% !important;
             }
-
-            h5 {
+            h5 
+            {
                 font-style: normal;
                 font-weight: bold; //500 Font Weight Does Not Look Like Mockup Design
                 font-size: 18px !important;
                 line-height: 160% !important;
             }
         }
-
-        .productText:hover{
-            color: #5ECE7B;
-        }
     }
-
-    .out-of-stock {
+    .out-of-stock 
+    {
         opacity: 0.5;
 
-        .outOfStock {
+        .outOfStock 
+        {
             position: absolute;
             transform: translate(10%, -410%);
             font-family: Raleway;
@@ -80,36 +75,40 @@
             color: #8D8F9A;
         }
     }
-
-    .product:hover{
+    .product:hover
+    {
         padding: 3rem 2rem;
         width: 75%;
         box-shadow: 0 4px 8px #b6b6b6, 0 6px 20px #b6b6b6;
     }
 }
-
-.overlay {
+.overlay 
+{
     opacity: 0.3;
     transition: ease-in-out 0.4s;
-
-    .product:hover{
+    .product:hover
+    {
         padding: 3rem 2rem;
         width: 75%;
         box-shadow: 0 0 0 #b6b6b6, 0 0 0 #b6b6b6;
         cursor: default;
 
-        span {
+        span 
+        {
             cursor: default;
         }
 
-        span:hover {
-            .addToCartButton {
+        span:hover 
+        {
+            .addToCartButton 
+            {
                 opacity: 1;
                 cursor: default;
             }
         }
 
-        .productText:hover {
+        .productText:hover 
+        {
             cursor: default;
             color: black;
         }

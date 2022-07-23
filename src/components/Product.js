@@ -14,44 +14,35 @@ export default class Product extends Component {
                 ? ("product")
                 : ("product out-of-stock")
             }>
-                <div>          
-                    <div className="productImageWrapper">
-                        <div>
-                            <img
-                                alt={this.props.product.name} src={this.props.product.gallery[0]}
-                                className="productCardImage"
-                            />
+                <Link to={ `/product/${this.props.product.id}`}>
+                    <div>          
+                        <div className="productImageWrapper">
+                            <div>
+                                <img
+                                    alt={this.props.product.name} src={this.props.product.gallery[0]}
+                                    className="productCardImage"
+                                />
+                                {
+                                    this.props.product.inStock
+                                    ? ("")
+                                    : (<h5 className="outOfStock">OUT OF STOCK</h5>)
+                                }
+                            </div>
+
                             {
                                 this.props.product.inStock
-                                ? ("")
-                                : (<h5 className="outOfStock">OUT OF STOCK</h5>)
+                                ? (
+                                    <span>
+                                        <img src={addToCart} className="addToCartButton" alt=""/>
+                                    </span>
+                                )
+                                : ("")
                             }
                         </div>
 
                         {
-                            this.props.product.inStock
+                            this.props.overlay
                             ? (
-                                <span>
-                                    <img src={addToCart} className="addToCartButton" alt=""/>
-                                </span>
-                            )
-                            : ("")
-                        }
-                    </div>
-
-                    {
-                        this.props.overlay
-                        ? (
-                        <div className="productText">
-                            <h4>{this.props.product.brand} {this.props.product.name}</h4>
-                            <h5>
-                                {this.props.returnSymbol(this.props.product.prices[this.props.currencyIndex].currency)} 
-                                {this.props.product.prices[this.props.currencyIndex].amount
-                            }</h5>
-                        </div>
-                        )
-                        : (
-                        <Link to={ `/product/${this.props.product.id}`}>
                             <div className="productText">
                                 <h4>{this.props.product.brand} {this.props.product.name}</h4>
                                 <h5>
@@ -59,10 +50,19 @@ export default class Product extends Component {
                                     {this.props.product.prices[this.props.currencyIndex].amount
                                 }</h5>
                             </div>
-                        </Link>
-                        )
-                    }
-                </div>
+                            )
+                            : (
+                            <div className="productText">
+                                <h4>{this.props.product.brand} {this.props.product.name}</h4>
+                                <h5>
+                                    {this.props.returnSymbol(this.props.product.prices[this.props.currencyIndex].currency)} 
+                                    {this.props.product.prices[this.props.currencyIndex].amount
+                                }</h5>
+                            </div>
+                            )
+                        }
+                    </div>
+                </Link>
             </div>
         )
     }
