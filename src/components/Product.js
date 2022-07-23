@@ -19,7 +19,7 @@ export default class Product extends Component {
                         <div>
                             <img
                                 alt={this.props.product.name} src={this.props.product.gallery[0]}
-                                className="responsiveImage"
+                                className="productCardImage"
                             />
                             {
                                 this.props.product.inStock
@@ -31,11 +31,7 @@ export default class Product extends Component {
                         {
                             this.props.product.inStock
                             ? (
-                                <span onClick={
-                                    this.props.overlay
-                                    ? (null)
-                                    : (() => this.props.ADD_TO_CART(this.props.product))
-                                }>
+                                <span>
                                     <img src={addToCart} className="addToCartButton" alt=""/>
                                 </span>
                             )
