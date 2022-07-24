@@ -20,9 +20,31 @@
             cursor: pointer;
         }
 
-        .bigImage img {
+        .bigImageImg {
             //Check Figma Scale Size
-            width: 375px;
+            width: 100%;
+            max-width: 375px;
+            height: auto;
+        }
+        .out-of-stock 
+        {
+            opacity: 0.5;
+            position: relative;
+            text-align: center;
+    
+            .outOfStock 
+            {
+                font-family: Raleway;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                /* identical to box height, or 38px */
+                color: #8D8F9A;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
         }
     }
 

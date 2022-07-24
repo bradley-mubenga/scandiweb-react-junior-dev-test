@@ -29,7 +29,7 @@ export default class ProductPage extends Component {
                 {/*Here we will pass the data into the components as props if we have large jsx*/}
                 {({loading, error, data}) => {
                 if (loading) return <p>Loading...</p>;
-                if (error) return <p>Error :(</p>;
+                if (error) return <p>Error!</p>;
                 
                 return (
                     <main className="container" key={data.product.id}>
@@ -52,11 +52,17 @@ export default class ProductPage extends Component {
                                     }
                                 </div>
 
-                                <div className="bigImage">
+                                <div className={data.product.inStock ? "bigImage" : "bigImage out-of-stock"}>
                                     <img
                                         src={data.product.gallery[this.state.imageIndex]} 
                                         alt={data.product.name}
+                                        className="bigImageImg"
                                     />
+                                    {
+                                       data.product.inStock
+                                        ? ("")
+                                        : (<div className="outOfStock">OUT OF STOCK</div>)
+                                    }
                                 </div>
                             </div>
 
