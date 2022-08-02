@@ -128,6 +128,30 @@ nav {
             transition: all 0.3s ease;
             overflow-y: scroll !important;
 
+            //
+            .cartCount
+            {
+                display: flex;
+                padding: 0 0 32px 0;
+                p.myBag {
+                    padding: 0 7px 0 0;
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+                p.countNumber {
+                    font-weight: lighter;
+                }
+            }
+
+            h5 
+            {
+                padding: 0 0 32px 0;
+            }
+            .boldBagText
+            {
+                font-weight: bolder;
+            }
+
             li {
                 width: 100%;
                 display: block;

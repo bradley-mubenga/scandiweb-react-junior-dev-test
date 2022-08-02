@@ -60,8 +60,12 @@ export default class Dropdown extends Component {
                         : "dropdownCart"
                     }
                 >
-                    <h5><span>My Bag</span>, {this.itemsInCart(this.props.shoppingCart)} items</h5>
-                    <div >
+                    {/*<h5><span className='boldBagText'></span>, </h5>*/}
+                    <div className='cartCount'>
+                        <p className='myBag'>My Bag, </p>
+                        <p className='countNumber'>{this.itemsInCart(this.props.shoppingCart)} items</p>
+                    </div>
+                    <div>
                     {this.props.shoppingCart.slice(0, 2).map((product, index) => (
                         <CartItem
                         returnSymbol={this.props.returnSymbol}
