@@ -104,6 +104,7 @@ export default class App extends Component {
     ADD_TO_CART = (product) => {
         //Check if its in cart
         const doesExist = this.state.shoppingCart.some(item => item.id === product.id);
+        console.log(`This is the data: ${product}`)
         
         //Incrementing The Cart Quantity If It Exists
         if (doesExist) {
