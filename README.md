@@ -11,7 +11,9 @@ npm install
 npm start
 ```
 
-## Workflow 1
+## Apollo Client
+- In oder to work with class components I have taken a Hybrid approach in using elements from the apollo v3 as well as apollo v2. 
+- Setting up the appolo client in the index.js file as instructed by the documentation (link) since we cannot use functional compoents and therefore cannot use hooks, I ham using the query component from Apollo v2 (Link) to requry datat and render it in the DOM.
 
 ```javascript
 ```
