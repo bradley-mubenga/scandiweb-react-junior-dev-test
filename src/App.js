@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 //Example Code For Custom Query Workflow
-import Example from "./Example";
+import PLP from "./pages/PLP";
 //
 export default class App extends Component {
   render() {
     return (
       <div>
-        <Example />
+        <PLP />
       </div>
     );
   }
